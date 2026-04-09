@@ -2,36 +2,36 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-    const { name, email, phone, role, experience, message } = req.body;
+  const { name, email, phone, role, experience, message, attachment } = req.body;
 
-    if (!name || !email || !phone || !role) {
-        return res.status(400).json({ error: 'Missing required fields' });
-    }
+  if (!name || !email || !phone || !role) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    });
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    const experienceLabels: Record<string, string> = {
-        entry: 'Entry Level (0–2 years)',
-        mid: 'Mid Level (3–5 years)',
-        senior: 'Senior Level (5+ years)',
-    };
+  const experienceLabels: Record<string, string> = {
+    entry: 'Entry Level (0–2 years)',
+    mid: 'Mid Level (3–5 years)',
+    senior: 'Senior Level (5+ years)',
+  };
 
-    const mailOptions = {
-        from: `"Mojake Consult Website" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_USER,
-        replyTo: email,
-        subject: `🎯 New Job Application: ${role} — ${name}`,
-        html: `
+  const mailOptions = {
+    from: `"Mojake Consult Website" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_USER,
+    replyTo: email,
+    subject: `🎯 New Job Application: ${role} — ${name}`,
+    html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <div style="background: linear-gradient(135deg, #0D1B4B, #152266); padding: 32px; border-radius: 12px 12px 0 0; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 24px;">New Job Application</h1>
@@ -71,13 +71,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         </div>
       </div>
     `,
-    };
+    attachments: attachment ? [{
+      filename: attachment.name,
+      content: attachment.content.split('base64,')[1],
+      encoding: 'base64'
+    }] : [],
+  };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        return res.status(200).json({ success: true });
-    } catch (err) {
-        console.error('Email send error (apply):', err);
-        return res.status(500).json({ error: 'Failed to send email. Please try again.' });
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    console.error('Email send error (apply):', err);
+    return res.status(500).json({ error: 'Failed to send email. Please try again.' });
+  }
 }

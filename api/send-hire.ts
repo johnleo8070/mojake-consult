@@ -2,43 +2,43 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-    if (req.method !== 'POST') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
 
-    const { company, contact, email, phone, roleType, headcount, message } = req.body;
+  const { company, contact, email, phone, roleType, headcount, message, attachment } = req.body;
 
-    if (!company || !contact || !email || !phone) {
-        return res.status(400).json({ error: 'Missing required fields' });
-    }
+  if (!company || !contact || !email || !phone) {
+    return res.status(400).json({ error: 'Missing required fields' });
+  }
 
-    const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
-        },
-    });
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  });
 
-    const roleTypeLabels: Record<string, string> = {
-        industrial: 'Industrial / Manufacturing Staff',
-        executive: 'Executive / Professional Roles',
-        gig: 'Gig Workers / Flexible Staff',
-        other: 'Other',
-    };
+  const roleTypeLabels: Record<string, string> = {
+    industrial: 'Industrial / Manufacturing Staff',
+    executive: 'Executive / Professional Roles',
+    gig: 'Gig Workers / Flexible Staff',
+    other: 'Other',
+  };
 
-    const headcountLabels: Record<string, string> = {
-        single: '1 – 5 Persons',
-        team: '5 – 20 Persons',
-        bulk: '20+ Bulk Recruitment',
-    };
+  const headcountLabels: Record<string, string> = {
+    single: '1 – 5 Persons',
+    team: '5 – 20 Persons',
+    bulk: '20+ Bulk Recruitment',
+  };
 
-    const mailOptions = {
-        from: `"Mojake Consult Website" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_USER,
-        replyTo: email,
-        subject: `🏢 New Hire Request: ${company} — ${roleTypeLabels[roleType] || roleType || 'General'}`,
-        html: `
+  const mailOptions = {
+    from: `"Mojake Consult Website" <${process.env.EMAIL_USER}>`,
+    to: process.env.EMAIL_USER,
+    replyTo: email,
+    subject: `🏢 New Hire Request: ${company} — ${roleTypeLabels[roleType] || roleType || 'General'}`,
+    html: `
       <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
         <div style="background: linear-gradient(135deg, #0D1B4B, #152266); padding: 32px; border-radius: 12px 12px 0 0; text-align: center;">
           <h1 style="color: white; margin: 0; font-size: 24px;">New Hire Request</h1>
@@ -82,13 +82,18 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         </div>
       </div>
     `,
-    };
+    attachments: attachment ? [{
+      filename: attachment.name,
+      content: attachment.content.split('base64,')[1],
+      encoding: 'base64'
+    }] : [],
+  };
 
-    try {
-        await transporter.sendMail(mailOptions);
-        return res.status(200).json({ success: true });
-    } catch (err) {
-        console.error('Email send error (hire):', err);
-        return res.status(500).json({ error: 'Failed to send email. Please try again.' });
-    }
+  try {
+    await transporter.sendMail(mailOptions);
+    return res.status(200).json({ success: true });
+  } catch (err) {
+    console.error('Email send error (hire):', err);
+    return res.status(500).json({ error: 'Failed to send email. Please try again.' });
+  }
 }

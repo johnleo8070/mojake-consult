@@ -28,7 +28,7 @@ function Section({ children, className = '' }: { children: React.ReactNode; clas
 }
 
 export default function HirePage() {
-    const [form, setForm] = useState({ company: '', contact: '', email: '', phone: '', roleType: '', headcount: '', message: '' });
+    const [form, setForm] = useState({ company: '', contact: '', email: '', phone: '', roleType: '', headcount: '', message: '', attachment: null as { name: string; type: string; content: string } | null });
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -37,6 +37,32 @@ export default function HirePage() {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                setError('File size must be less than 5MB');
+                e.target.value = '';
+                return;
+            }
+            setError('');
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setForm(prev => ({
+                    ...prev,
+                    attachment: {
+                        name: file.name,
+                        type: file.type,
+                        content: reader.result as string
+                    }
+                }));
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setForm(prev => ({ ...prev, attachment: null }));
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -145,6 +171,11 @@ export default function HirePage() {
                                                 <option value="bulk" style={{ background: '#0D1B4B' }}>20+ Bulk Recruitment</option>
                                             </select>
                                         </div>
+                                    </div>
+
+                                    <div className="mb-6">
+                                        <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Attach File (JD or Requirements)</label>
+                                        <input type="file" onChange={handleFileChange} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx,.xls,.xlsx" />
                                     </div>
 
                                     <div className="mb-8">

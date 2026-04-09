@@ -28,7 +28,7 @@ function Section({ children, className = '' }: { children: React.ReactNode; clas
 }
 
 export default function ApplyJobPage() {
-    const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', experience: '', message: '' });
+    const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', experience: '', message: '', attachment: null as { name: string; type: string; content: string } | null });
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -37,6 +37,32 @@ export default function ApplyJobPage() {
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         setForm({ ...form, [e.target.name]: e.target.value });
+    };
+
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            if (file.size > 5 * 1024 * 1024) {
+                setError('File size must be less than 5MB');
+                e.target.value = '';
+                return;
+            }
+            setError('');
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setForm(prev => ({
+                    ...prev,
+                    attachment: {
+                        name: file.name,
+                        type: file.type,
+                        content: reader.result as string
+                    }
+                }));
+            };
+            reader.readAsDataURL(file);
+        } else {
+            setForm(prev => ({ ...prev, attachment: null }));
+        }
     };
 
     const handleSubmit = async (e: React.FormEvent) => {
@@ -137,7 +163,7 @@ export default function ApplyJobPage() {
                                         </div>
                                         <div>
                                             <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Upload Resume / CV</label>
-                                            <input type="file" required style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
+                                            <input type="file" required onChange={handleFileChange} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
                                         </div>
                                     </div>
 
