@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
+import { Menu, X, Phone, Mail, ChevronDown, Briefcase } from 'lucide-react';
 import Logo from './Logo';
 
 const navLinks = [
@@ -131,17 +131,17 @@ export default function Navbar() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            <a
-              href="tel:+2347019883073"
+            <Link
+              to="/apply"
               className="mirror-button flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
               style={{
                 background: 'linear-gradient(135deg, #E8192C 0%, #b8111f 100%)',
                 boxShadow: '0 4px 15px rgba(232,25,44,0.3)',
               }}
             >
-              <Phone size={14} />
-              Free Consultation
-            </a>
+              <Briefcase size={14} />
+              Apply Now
+            </Link>
           </div>
 
           {/* Mobile Toggle */}
@@ -193,13 +193,14 @@ export default function Navbar() {
               </div>
             ))}
             <div className="pt-3 border-t border-gray-100 space-y-2">
-              <a
-                href="tel:+2347019883073"
+              <Link
+                to="/apply"
+                onClick={() => setMobileOpen(false)}
                 className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-semibold text-white text-center justify-center mirror-button"
                 style={{ background: 'linear-gradient(135deg, #E8192C 0%, #b8111f 100%)' }}
               >
-                <Phone size={14} /> Call: +2347019883073
-              </a>
+                <Briefcase size={14} /> Apply Now
+              </Link>
               <a
                 href="mailto:mail@mojakeconsult.com"
                 className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-semibold text-center justify-center border"
