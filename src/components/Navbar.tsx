@@ -1,0 +1,181 @@
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, Phone, Mail } from 'lucide-react';
+import Logo from './Logo';
+
+const navLinks = [
+  { label: 'Home', path: '/' },
+  { label: 'About', path: '/about' },
+  { label: 'Services', path: '/services' },
+  { label: 'Businesses & Orgs', path: '/businesses-organizations' },
+  { label: 'Our Team', path: '/our-team' },
+  { label: 'Gallery', path: '/gallery' },
+  { label: 'Careers', path: '/careers' },
+  { label: 'Contact', path: '/contact' },
+];
+
+export default function Navbar() {
+  const [scrolled, setScrolled] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => {
+    setMobileOpen(false);
+  }, [location.pathname]);
+
+  const isActive = (path: string) =>
+    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
+
+  return (
+    <>
+      {/* Top Bar */}
+      <div
+        className="hidden md:block text-xs py-2 px-6"
+        style={{ background: 'linear-gradient(90deg, #080f2e 0%, #0D1B4B 100%)', color: 'rgba(255,255,255,0.75)' }}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <a
+              href="tel:+2347019883073"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Phone size={11} />
+              <span>+2347019883073</span>
+            </a>
+            <a
+              href="mailto:mail@mojakeconsult.com"
+              className="flex items-center gap-1.5 hover:text-white transition-colors"
+            >
+              <Mail size={11} />
+              <span>mail@mojakeconsult.com</span>
+            </a>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>Mon–Fri: 8AM–6PM &nbsp;|&nbsp; 24/7 Emergency Support</span>
+            <span className="w-px h-3 bg-white/20" />
+            <span>Ota, Ogun State, Nigeria</span>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Navbar */}
+      <header
+        className={`sticky top-0 z-50 transition-all duration-500 ${scrolled
+          ? 'glass-white shadow-lg shadow-navy/10'
+          : 'bg-transparent'
+          }`}
+        style={
+          !scrolled
+            ? { background: 'rgba(255,255,255,0.97)', borderBottom: '1px solid rgba(13,27,75,0.08)' }
+            : undefined
+        }
+      >
+        <nav className="max-w-7xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" aria-label="Mojake Consult Home">
+            <Logo variant="navbar" />
+          </Link>
+
+          {/* Desktop Nav */}
+          <ul className="hidden md:flex items-center gap-1">
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  to={link.path}
+                  className={`relative px-2 lg:px-3 py-2 text-[13px] lg:text-sm font-medium rounded-lg transition-all duration-200 group ${isActive(link.path)
+                    ? 'text-red-600'
+                    : 'text-navy hover:text-red-600'
+                    }`}
+                  style={{
+                    color: isActive(link.path) ? '#E8192C' : '#0D1B4B',
+                  }}
+                >
+                  {link.label}
+                  <span
+                    className={`absolute bottom-0 left-4 right-4 h-0.5 rounded-full transition-all duration-300 ${isActive(link.path) ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
+                      }`}
+                    style={{ background: '#E8192C' }}
+                  />
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* CTA Button */}
+          <div className="hidden md:flex items-center gap-3">
+            <a
+              href="tel:+2347019883073"
+              className="mirror-button flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5"
+              style={{
+                background: 'linear-gradient(135deg, #E8192C 0%, #b8111f 100%)',
+                boxShadow: '0 4px 15px rgba(232,25,44,0.3)',
+              }}
+            >
+              <Phone size={14} />
+              Free Consultation
+            </a>
+          </div>
+
+          {/* Mobile Toggle */}
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="md:hidden p-2 rounded-lg transition-colors"
+            style={{ color: '#0D1B4B' }}
+            aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </nav>
+
+        {/* Mobile Menu */}
+        <div
+          className={`md:hidden overflow-hidden transition-all duration-300 ${mobileOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
+            }`}
+          style={{ background: 'rgba(255,255,255,0.98)', borderTop: '1px solid rgba(13,27,75,0.08)' }}
+        >
+          <div className="px-4 py-4 space-y-1">
+            {navLinks.map((link) => (
+              <Link
+                key={link.path}
+                to={link.path}
+                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive(link.path)
+                  ? 'text-white'
+                  : 'text-navy hover:bg-gray-50'
+                  }`}
+                style={
+                  isActive(link.path)
+                    ? { background: 'linear-gradient(135deg, #0D1B4B 0%, #E8192C 100%)', color: '#fff' }
+                    : { color: '#0D1B4B' }
+                }
+              >
+                {link.label}
+              </Link>
+            ))}
+            <div className="pt-3 border-t border-gray-100 space-y-2">
+              <a
+                href="tel:+2347019883073"
+                className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-semibold text-white text-center justify-center mirror-button"
+                style={{ background: 'linear-gradient(135deg, #E8192C 0%, #b8111f 100%)' }}
+              >
+                <Phone size={14} /> Call: +2347019883073
+              </a>
+              <a
+                href="mailto:mail@mojakeconsult.com"
+                className="flex items-center gap-2 w-full px-4 py-3 rounded-xl text-sm font-semibold text-center justify-center border"
+                style={{ color: '#0D1B4B', borderColor: 'rgba(13,27,75,0.2)' }}
+              >
+                <Mail size={14} /> mail@mojakeconsult.com
+              </a>
+            </div>
+          </div>
+        </div>
+      </header>
+    </>
+  );
+}

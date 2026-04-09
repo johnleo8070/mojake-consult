@@ -1,0 +1,83 @@
+import type { VercelRequest, VercelResponse } from '@vercel/node';
+import nodemailer from 'nodemailer';
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    const { name, email, phone, role, experience, message } = req.body;
+
+    if (!name || !email || !phone || !role) {
+        return res.status(400).json({ error: 'Missing required fields' });
+    }
+
+    const transporter = nodemailer.createTransport({
+        service: 'gmail',
+        auth: {
+            user: process.env.EMAIL_USER,
+            pass: process.env.EMAIL_PASS,
+        },
+    });
+
+    const experienceLabels: Record<string, string> = {
+        entry: 'Entry Level (0–2 years)',
+        mid: 'Mid Level (3–5 years)',
+        senior: 'Senior Level (5+ years)',
+    };
+
+    const mailOptions = {
+        from: `"Mojake Consult Website" <${process.env.EMAIL_USER}>`,
+        to: process.env.EMAIL_USER,
+        replyTo: email,
+        subject: `🎯 New Job Application: ${role} — ${name}`,
+        html: `
+      <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+        <div style="background: linear-gradient(135deg, #0D1B4B, #152266); padding: 32px; border-radius: 12px 12px 0 0; text-align: center;">
+          <h1 style="color: white; margin: 0; font-size: 24px;">New Job Application</h1>
+          <p style="color: rgba(255,255,255,0.7); margin: 8px 0 0;">Mojake Consult Careers Portal</p>
+        </div>
+        <div style="background: #f8f8fc; padding: 32px; border-radius: 0 0 12px 12px; border: 1px solid #e5e7eb; border-top: none;">
+          <table style="width: 100%; border-collapse: collapse;">
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #E8192C; width: 35%;">Full Name</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${name}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #E8192C;">Email</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;"><a href="mailto:${email}" style="color: #0D1B4B;">${email}</a></td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #E8192C;">Phone</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${phone}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #E8192C;">Role Applied</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${role}</td>
+            </tr>
+            <tr>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold; color: #E8192C;">Experience</td>
+              <td style="padding: 10px 0; border-bottom: 1px solid #e5e7eb;">${experienceLabels[experience] || experience || 'Not specified'}</td>
+            </tr>
+          </table>
+          ${message ? `
+          <div style="margin-top: 24px;">
+            <p style="font-weight: bold; color: #E8192C; margin-bottom: 8px;">Cover Letter / Additional Info:</p>
+            <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; color: #374151;">${message}</div>
+          </div>` : ''}
+          <p style="margin-top: 24px; font-size: 12px; color: #9ca3af; text-align: center;">
+            Submitted via Mojake Consult website · ${new Date().toLocaleString('en-NG', { timeZone: 'Africa/Lagos' })} WAT
+          </p>
+        </div>
+      </div>
+    `,
+    };
+
+    try {
+        await transporter.sendMail(mailOptions);
+        return res.status(200).json({ success: true });
+    } catch (err) {
+        console.error('Email send error (apply):', err);
+        return res.status(500).json({ error: 'Failed to send email. Please try again.' });
+    }
+}
