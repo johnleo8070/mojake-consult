@@ -28,6 +28,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [mobileDropdownOpen, setMobileDropdownOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -38,6 +39,7 @@ export default function Navbar() {
 
   useEffect(() => {
     setMobileOpen(false);
+    setMobileDropdownOpen(false);
   }, [location.pathname]);
 
   const isActive = (path: string) =>
@@ -166,7 +168,12 @@ export default function Navbar() {
               <div key={link.path}>
                 <Link
                   to={link.path}
-                  onClick={(e) => link.dropdown && e.preventDefault()}
+                  onClick={(e) => {
+                    if (link.dropdown) {
+                      e.preventDefault();
+                      setMobileDropdownOpen(!mobileDropdownOpen);
+                    }
+                  }}
                   className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive(link.path)
                     ? 'text-white'
                     : 'text-navy hover:bg-gray-50'
@@ -178,16 +185,18 @@ export default function Navbar() {
                   }
                 >
                   {link.label}
-                  {link.dropdown && <ChevronDown size={16} className={isActive(link.path) ? "opacity-70" : ""} />}
+                  {link.dropdown && <ChevronDown size={16} className={`${isActive(link.path) ? "opacity-70" : ""} transition-transform duration-200 ${mobileDropdownOpen ? 'rotate-180' : ''}`} />}
                 </Link>
 
                 {link.dropdown && (
-                  <div className="pl-4 mt-1 border-l-2 border-red-100 ml-6 space-y-1 mb-2">
-                    {link.dropdown.map(drop => (
-                      <a href={drop.path} key={drop.path} onClick={() => setMobileOpen(false)} className="block px-4 py-2 text-sm text-gray-600 hover:text-red-600 rounded-lg hover:bg-gray-50/50 transition-colors">
-                        {drop.label}
-                      </a>
-                    ))}
+                  <div className={`pl-4 overflow-hidden transition-all duration-300 ${mobileDropdownOpen ? 'max-h-96 opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0'}`}>
+                    <div className="border-l-2 border-red-100 ml-6 space-y-1">
+                      {link.dropdown.map(drop => (
+                        <a href={drop.path} key={drop.path} onClick={() => setMobileOpen(false)} className="block px-4 py-2.5 text-sm text-gray-600 hover:text-red-600 rounded-lg hover:bg-gray-50/50 transition-colors">
+                          {drop.label}
+                        </a>
+                      ))}
+                    </div>
                   </div>
                 )}
               </div>
