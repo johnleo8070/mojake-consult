@@ -5,14 +5,11 @@ export default function GalleryPage() {
         window.scrollTo(0, 0);
     }, []);
 
-    // NOTE: Populate these with actual images representing Mojake Consult's operations, teams, and events.
     const images = [
-        { src: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Industrial Operations', category: 'Operations' },
-        { src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Office Setup', category: 'Corporate' },
-        { src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32d7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Team Meeting', category: 'Team' },
-        { src: 'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Training Session', category: 'Training' },
-        { src: 'https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Warehouse Logistics', category: 'Operations' },
-        { src: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80', alt: 'Professional Collaboration', category: 'Corporate' },
+        { src: '/bussiness 1.jpg', alt: 'Industrial Operations', category: 'Operations' },
+        { src: '/bussiness 2.jpg', alt: 'Corporate Environment', category: 'Corporate' },
+        { src: '/bussiness 3.jpg', alt: 'Team Work', category: 'Team' },
+        { src: '/bussiness 4.jpg', alt: 'Logistics Management', category: 'Operations' },
     ];
 
     return (
@@ -28,10 +25,6 @@ export default function GalleryPage() {
             {/* Gallery Grid */}
             <section className="py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    {/* Notice to User */}
-                    <div className="mb-12 p-4 bg-yellow-50 border border-yellow-200 rounded-xl text-yellow-800 text-sm">
-                        <strong>Note from Developer:</strong> Please provide high-quality images of your actual operations, staff, and facilities to replace these placeholder images.
-                    </div>
 
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                         {images.map((img, idx) => (
