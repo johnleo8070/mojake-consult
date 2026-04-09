@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
+import CTAStrip from './components/CTAStrip';
 import HomePage from './pages/HomePage';
 import ServicesPage from './pages/ServicesPage';
 import CareersPage from './pages/CareersPage';
@@ -79,6 +80,7 @@ export default function App() {
             <Route path="*" element={<HomePage />} />
           </Routes>
         </div>
+        <CTAStrip />
         <Footer />
       </div>
       <WhatsAppButton />
