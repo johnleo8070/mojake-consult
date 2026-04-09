@@ -1,12 +1,23 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Phone, Mail } from 'lucide-react';
+import { Menu, X, Phone, Mail, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 
 const navLinks = [
   { label: 'Home', path: '/' },
   { label: 'About', path: '/about' },
-  { label: 'Services', path: '/services' },
+  {
+    label: 'Services',
+    path: '/services',
+    dropdown: [
+      { label: 'Industrial Staffing', path: '/services#industrial' },
+      { label: 'HR Compliance', path: '/services#hr-compliance' },
+      { label: 'Executive Search', path: '/services#executive' },
+      { label: 'Supply Chain', path: '/services#supply' },
+      { label: 'Gig Workforce', path: '/services#gig' },
+      { label: 'Industry Solutions', path: '/services#industry-solutions' },
+    ]
+  },
   { label: 'Businesses & Orgs', path: '/businesses-organizations' },
   { label: 'Our Team', path: '/our-team' },
   { label: 'Gallery', path: '/gallery' },
@@ -85,10 +96,10 @@ export default function Navbar() {
           {/* Desktop Nav */}
           <ul className="hidden md:flex items-center gap-1">
             {navLinks.map((link) => (
-              <li key={link.path}>
+              <li key={link.path} className="group relative">
                 <Link
                   to={link.path}
-                  className={`relative px-2 lg:px-3 py-2 text-[13px] lg:text-sm font-medium rounded-lg transition-all duration-200 group ${isActive(link.path)
+                  className={`relative flex items-center px-2 lg:px-3 py-2 text-[13px] lg:text-sm font-medium rounded-lg transition-all duration-200 ${isActive(link.path)
                     ? 'text-red-600'
                     : 'text-navy hover:text-red-600'
                     }`}
@@ -97,12 +108,23 @@ export default function Navbar() {
                   }}
                 >
                   {link.label}
+                  {link.dropdown && <ChevronDown size={14} className="ml-1 opacity-70 group-hover:rotate-180 transition-transform" />}
                   <span
                     className={`absolute bottom-0 left-4 right-4 h-0.5 rounded-full transition-all duration-300 ${isActive(link.path) ? 'opacity-100' : 'opacity-0 group-hover:opacity-60'
                       }`}
                     style={{ background: '#E8192C' }}
                   />
                 </Link>
+
+                {link.dropdown && (
+                  <div className="absolute left-0 top-full mx-auto mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 glass-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-xl border border-gray-100 py-2 overflow-hidden z-[100]">
+                    {link.dropdown.map(drop => (
+                      <a href={drop.path} key={drop.path} className="block px-4 py-2.5 text-sm text-gray-700 hover:text-red-600 hover:bg-gray-50/80 transition-colors">
+                        {drop.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
               </li>
             ))}
           </ul>
@@ -141,21 +163,34 @@ export default function Navbar() {
         >
           <div className="px-4 py-4 space-y-1">
             {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`block px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive(link.path)
-                  ? 'text-white'
-                  : 'text-navy hover:bg-gray-50'
-                  }`}
-                style={
-                  isActive(link.path)
-                    ? { background: 'linear-gradient(135deg, #0D1B4B 0%, #E8192C 100%)', color: '#fff' }
-                    : { color: '#0D1B4B' }
-                }
-              >
-                {link.label}
-              </Link>
+              <div key={link.path}>
+                <Link
+                  to={link.path}
+                  onClick={(e) => link.dropdown && e.preventDefault()}
+                  className={`flex items-center justify-between px-4 py-3 rounded-xl text-sm font-medium transition-all ${isActive(link.path)
+                    ? 'text-white'
+                    : 'text-navy hover:bg-gray-50'
+                    }`}
+                  style={
+                    isActive(link.path)
+                      ? { background: 'linear-gradient(135deg, #0D1B4B 0%, #E8192C 100%)', color: '#fff' }
+                      : { color: '#0D1B4B' }
+                  }
+                >
+                  {link.label}
+                  {link.dropdown && <ChevronDown size={16} className={isActive(link.path) ? "opacity-70" : ""} />}
+                </Link>
+
+                {link.dropdown && (
+                  <div className="pl-4 mt-1 border-l-2 border-red-100 ml-6 space-y-1 mb-2">
+                    {link.dropdown.map(drop => (
+                      <a href={drop.path} key={drop.path} onClick={() => setMobileOpen(false)} className="block px-4 py-2 text-sm text-gray-600 hover:text-red-600 rounded-lg hover:bg-gray-50/50 transition-colors">
+                        {drop.label}
+                      </a>
+                    ))}
+                  </div>
+                )}
+              </div>
             ))}
             <div className="pt-3 border-t border-gray-100 space-y-2">
               <a
