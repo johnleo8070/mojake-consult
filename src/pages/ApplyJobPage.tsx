@@ -158,7 +158,8 @@ export default function ApplyJobPage() {
                                                 <option value="" style={{ background: '#0D1B4B' }}>Select...</option>
                                                 <option value="entry" style={{ background: '#0D1B4B' }}>Entry Level (0-2 years)</option>
                                                 <option value="mid" style={{ background: '#0D1B4B' }}>Mid Level (3-5 years)</option>
-                                                <option value="senior" style={{ background: '#0D1B4B' }}>Senior Level (5+ years)</option>
+                                                <option value="senior" style={{ background: '#0D1B4B' }}>Junior Level (5+ years)</option>
+                                                <option value="senior" style={{ background: '#0D1B4B' }}>Senior Level (10+ years)</option>
                                             </select>
                                         </div>
                                         <div>

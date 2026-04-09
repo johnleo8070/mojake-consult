@@ -32,7 +32,7 @@ export default function OurTeamPage() {
         },
         {
             name: 'Emmanuel Jaiyeola',
-            role: 'Board Member',
+            role: 'General manager',
             bio: 'Emmanuel possesses a wealth of marketing and recruiting experience having worked as Managing Director at Talhub Ltd, a recruitment and staffing company, and Emmtol Consults, an immigration and investment consultation outfit, with national and international acclaim and Marketing Manager at Fintech Legal Centre. He holds postgraduate degrees in Business Administration, Project Management and International Marketing. He is currently concluding his doctorate degree in Business Administration. He is a dynamic administrator and an excellent communicator.',
             image: '/team-Emmanuel.jpg',
         }

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { MapPin, Clock, ArrowRight, Briefcase, TrendingUp, Heart, BookOpen, CheckCircle, Mail, Phone } from 'lucide-react';
 
 function useVisible(threshold = 0.12) {
@@ -339,15 +340,15 @@ export default function CareersPage() {
                   <p className="max-w-2xl mx-auto text-lg md:text-xl mb-10 leading-relaxed font-light" style={{ color: 'rgba(255,255,255,0.8)' }}>
                     Our team is currently at full strength, but excellence never sleeps. We are frequently looking for outstanding talent to join our mission. <strong className="text-white font-semibold">Check back soon</strong> for new opportunities—your next big career move might just be around the corner!
                   </p>
-                  <a
-                    href="mailto:careers@mojakeconsult.com"
+                  <Link
+                    to="/apply"
                     className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-bold text-sm md:text-base transition-all duration-300 hover:-translate-y-1"
                     style={{ background: 'rgba(255,255,255,0.1)', color: 'white', border: '1px solid rgba(255,255,255,0.2)' }}
                     onMouseOver={(e) => { e.currentTarget.style.background = 'white'; e.currentTarget.style.color = '#E8192C'; }}
                     onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,0.1)'; e.currentTarget.style.color = 'white'; }}
                   >
                     Send Spontaneous Application <ArrowRight size={18} />
-                  </a>
+                  </Link>
                 </div>
               </Section>
             )}

@@ -166,9 +166,10 @@ export default function HirePage() {
                                             <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Estimated Headcount</label>
                                             <select name="headcount" value={form.headcount} onChange={handleChange} style={{ ...inputStyle, cursor: 'pointer' }}>
                                                 <option value="" style={{ background: '#0D1B4B' }}>Select...</option>
-                                                <option value="single" style={{ background: '#0D1B4B' }}>1 - 5 Persons</option>
-                                                <option value="team" style={{ background: '#0D1B4B' }}>5 - 20 Persons</option>
-                                                <option value="bulk" style={{ background: '#0D1B4B' }}>20+ Bulk Recruitment</option>
+                                                <option value="single" style={{ background: '#0D1B4B' }}>1 - 100 Persons</option>
+                                                <option value="team" style={{ background: '#0D1B4B' }}>100 - 500 Persons</option>
+                                                <option value="bulk" style={{ background: '#0D1B4B' }}>500 - 1000 Persons</option>
+                                                <option value="bulk" style={{ background: '#0D1B4B' }}>1000+ bulk recruitment</option>
                                             </select>
                                         </div>
                                     </div>
