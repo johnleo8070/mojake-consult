@@ -6,7 +6,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, role, experience, message, attachment } = req.body;
+  const { name, email, phone, role, experience, message, attachment, attachmentCover, attachmentOther } = req.body;
 
   if (!name || !email || !phone || !role) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -23,7 +23,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   const experienceLabels: Record<string, string> = {
     entry: 'Entry Level (0–2 years)',
     mid: 'Mid Level (3–5 years)',
-    senior: 'Senior Level (5+ years)',
+    junior: 'Junior Level (5+ years)',
+    senior: 'Senior Level (10+ years)',
   };
 
   const mailOptions = {
@@ -71,11 +72,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         </div>
       </div>
     `,
-    attachments: attachment ? [{
-      filename: attachment.name,
-      content: attachment.content.split('base64,')[1],
-      encoding: 'base64'
-    }] : [],
+    attachments: [
+      ...(attachment ? [{
+        filename: attachment.name,
+        content: attachment.content.split('base64,')[1],
+        encoding: 'base64'
+      }] : []),
+      ...(attachmentCover ? [{
+        filename: `Cover_Letter_${attachmentCover.name}`,
+        content: attachmentCover.content.split('base64,')[1],
+        encoding: 'base64'
+      }] : []),
+      ...(attachmentOther ? [{
+        filename: `Additional_Doc_${attachmentOther.name}`,
+        content: attachmentOther.content.split('base64,')[1],
+        encoding: 'base64'
+      }] : []),
+    ],
   };
 
   try {

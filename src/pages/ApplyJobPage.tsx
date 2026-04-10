@@ -28,7 +28,17 @@ function Section({ children, className = '' }: { children: React.ReactNode; clas
 }
 
 export default function ApplyJobPage() {
-    const [form, setForm] = useState({ name: '', email: '', phone: '', role: '', experience: '', message: '', attachment: null as { name: string; type: string; content: string } | null });
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        phone: '',
+        role: '',
+        experience: '',
+        message: '',
+        attachment: null as { name: string; type: string; content: string } | null,
+        attachmentCover: null as { name: string; type: string; content: string } | null,
+        attachmentOther: null as { name: string; type: string; content: string } | null
+    });
     const [submitted, setSubmitted] = useState(false);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -39,11 +49,11 @@ export default function ApplyJobPage() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'attachment' | 'attachmentCover' | 'attachmentOther') => {
         const file = e.target.files?.[0];
         if (file) {
             if (file.size > 5 * 1024 * 1024) {
-                setError('File size must be less than 5MB');
+                setError(`${file.name} is too large. Max 5MB.`);
                 e.target.value = '';
                 return;
             }
@@ -52,7 +62,7 @@ export default function ApplyJobPage() {
             reader.onloadend = () => {
                 setForm(prev => ({
                     ...prev,
-                    attachment: {
+                    [field]: {
                         name: file.name,
                         type: file.type,
                         content: reader.result as string
@@ -61,7 +71,7 @@ export default function ApplyJobPage() {
             };
             reader.readAsDataURL(file);
         } else {
-            setForm(prev => ({ ...prev, attachment: null }));
+            setForm(prev => ({ ...prev, [field]: null }));
         }
     };
 
@@ -158,18 +168,29 @@ export default function ApplyJobPage() {
                                                 <option value="" style={{ background: '#0D1B4B' }}>Select...</option>
                                                 <option value="entry" style={{ background: '#0D1B4B' }}>Entry Level (0-2 years)</option>
                                                 <option value="mid" style={{ background: '#0D1B4B' }}>Mid Level (3-5 years)</option>
-                                                <option value="senior" style={{ background: '#0D1B4B' }}>Junior Level (5+ years)</option>
+                                                <option value="junior" style={{ background: '#0D1B4B' }}>Junior Level (5+ years)</option>
                                                 <option value="senior" style={{ background: '#0D1B4B' }}>Senior Level (10+ years)</option>
                                             </select>
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Upload Resume / CV</label>
-                                            <input type="file" required onChange={handleFileChange} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Upload Resume / CV *</label>
+                                            <input type="file" required onChange={(e) => handleFileChange(e, 'attachment')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
+                                        </div>
+                                    </div>
+
+                                    <div className="grid md:grid-cols-2 gap-6 mb-6">
+                                        <div>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Cover Letter (Optional)</label>
+                                            <input type="file" onChange={(e) => handleFileChange(e, 'attachmentCover')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
+                                        </div>
+                                        <div>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Other Documents (Optional)</label>
+                                            <input type="file" onChange={(e) => handleFileChange(e, 'attachmentOther')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
                                         </div>
                                     </div>
 
                                     <div className="mb-8">
-                                        <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Cover Letter / Additional Info</label>
+                                        <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50"> Additional Info</label>
                                         <textarea name="message" value={form.message} onChange={handleChange} rows={5} placeholder="Tell us why you're a great fit..." style={{ ...inputStyle, resize: 'vertical' }} />
                                     </div>
 
