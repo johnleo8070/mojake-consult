@@ -35,7 +35,7 @@ export default function ApplyJobPage() {
         role: '',
         experience: '',
         message: '',
-        attachment: null as { name: string; type: string; content: string } | null,
+        attachmentCv: null as { name: string; type: string; content: string } | null,
         attachmentCover: null as { name: string; type: string; content: string } | null,
         attachmentOther: null as { name: string; type: string; content: string } | null
     });
@@ -49,7 +49,7 @@ export default function ApplyJobPage() {
         setForm({ ...form, [e.target.name]: e.target.value });
     };
 
-    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'attachment' | 'attachmentCover' | 'attachmentOther') => {
+    const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>, field: 'attachmentCv' | 'attachmentCover' | 'attachmentOther') => {
         const file = e.target.files?.[0];
         if (file) {
             if (file.size > 5 * 1024 * 1024) {
@@ -174,7 +174,7 @@ export default function ApplyJobPage() {
                                         </div>
                                         <div>
                                             <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Upload Resume / CV *</label>
-                                            <input type="file" required onChange={(e) => handleFileChange(e, 'attachment')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
+                                            <input type="file" required onChange={(e) => handleFileChange(e, 'attachmentCv')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
                                         </div>
                                     </div>
 

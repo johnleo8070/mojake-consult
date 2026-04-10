@@ -6,7 +6,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, email, phone, role, experience, message, attachment, attachmentCover, attachmentOther } = req.body;
+  const { name, email, phone, role, experience, message, attachmentCv, attachmentCover, attachmentOther } = req.body;
 
   if (!name || !email || !phone || !role) {
     return res.status(400).json({ error: 'Missing required fields' });
@@ -63,7 +63,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
           </table>
           ${message ? `
           <div style="margin-top: 24px;">
-            <p style="font-weight: bold; color: #E8192C; margin-bottom: 8px;">Cover Letter / Additional Info:</p>
+            <p style="font-weight: bold; color: #E8192C; margin-bottom: 8px;"> Additional Info:</p>
             <div style="background: white; padding: 16px; border-radius: 8px; border: 1px solid #e5e7eb; white-space: pre-wrap; color: #374151;">${message}</div>
           </div>` : ''}
           <p style="margin-top: 24px; font-size: 12px; color: #9ca3af; text-align: center;">
@@ -73,9 +73,9 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       </div>
     `,
     attachments: [
-      ...(attachment ? [{
-        filename: attachment.name,
-        content: attachment.content.split('base64,')[1],
+      ...(attachmentCv ? [{
+        filename: `CV_${attachmentCv.name}`,
+        content: attachmentCv.content.split('base64,')[1],
         encoding: 'base64'
       }] : []),
       ...(attachmentCover ? [{
