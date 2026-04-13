@@ -30,7 +30,7 @@ export default function AboutCompanyPage() {
                             We help you build a valuable and <span className="text-gradient-red">long-lasting business</span>
                         </h1>
                         <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl font-light">
-                            Our work at Mo-Jake Consult goes beyond just management, staffing and consulting. We help you build a valuable and long-lasting business with the right human resource and great management options that maximize your business potential and helps you achieve all your business dreams.
+                            Our work at Mo-Jake Consult goes beyond just management, staffing and consulting. We help you build a valuable and long-lasting business with the right human resources and great management options that maximize your business potential and help you achieve business goals.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">
                             <Link
@@ -83,7 +83,7 @@ export default function AboutCompanyPage() {
                                     At Mo-Jake Consult, we understand that building a successful business requires more than just a good product or service. It also takes proper management and a strong, dedicated workforce. That's why we're here to help.
                                 </p>
                                 <p>
-                                    As a leading recruiting, staffing and management agency, we are dedicated to providing our clients with exceptional human resource and advisory solutions to help them build their workforce and achieve their business objectives. Our team of experts have years of experience in industry and are passionate about helping businesses thrive.
+                                    As a leading recruiting, staffing and management agency, we are dedicated to providing our clients with exceptional human resources and advisory solutions to help them build their workforce and achieve their business objectives. Our team of experts have years of experience in industry and are passionate about helping businesses thrive.
                                 </p>
                                 <div className="bg-white p-6 rounded-2xl shadow-sm border border-gray-100 my-8">
                                     <h4 className="font-bold text-[#0D1B4B] mb-3 flex items-center gap-2">
@@ -143,7 +143,7 @@ export default function AboutCompanyPage() {
                                     <div className="mt-1 w-2 h-2 rounded-full bg-[#E8192C]" />
                                     <p className="text-gray-600 text-base leading-relaxed font-light">
                                         <strong className="text-[#0D1B4B] font-medium block mb-1">Extensive Network & Experience</strong>
-                                        Our extensive human resource network and education-backed experience are key factors in providing exceptional human and intellectual resource solutions to our clients.
+                                        Our extensive human resources network and education-backed experience are key factors in providing exceptional human and intellectual resource solutions to our clients.
                                     </p>
                                 </li>
                                 <li className="flex items-start gap-4">

@@ -198,15 +198,13 @@ export default function HomePage() {
               </h1>
 
               <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.72)' }}>
-                From <strong className="text-white">machine operators</strong> deployed within 72 hours to{' '}
-                <strong className="text-white">C-suite executives</strong>, payroll compliance, and{' '}
-                <strong className="text-white">raw materials supply</strong> — Mojake Consult is Nigeria's most complete HR and industrial solution.
+                From deploying machine operators within 72 hours to providing C-suite executives, ensuring payroll compliance, and supplying raw materials, Mojake Consult offers Nigeria’s most complete HR and industrial solutions.
               </p>
 
               {/* Key Points */}
               <ul className="space-y-3 mb-10">
                 {[
-                  '5,000+ pre-screened industrial candidates ready for deployment',
+                  'Over 5000 pre screened industrial candidates ready for deployment',
                   'Full FIRS, PENCOM & NSITF compliance — zero penalties guaranteed',
                   '15-minute response to Agbara & Ogun industrial corridor',
                 ].map((point) => (
@@ -342,7 +340,7 @@ export default function HomePage() {
                 Drive Growth and Achieve Your Business Goals
               </h2>
               <p className="text-gray-600 text-lg md:text-xl leading-relaxed mb-8">
-                Finding and managing the right talent is crucial for the success of any organization. Here at Mo-Jake Consults, we help you build a valuable and long-lasting business with the right human resource and great management options that maximize your business potential and helps you achieve all your business dreams.
+                Finding and managing the right talent is crucial for the success of any organization. Here at Mo-Jake Consult, we help you build a valuable and long-lasting business with the right human resources and great management options that maximize your business potential and help you achieve business goals.
               </p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
                 <Link
