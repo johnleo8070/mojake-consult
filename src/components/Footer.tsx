@@ -108,7 +108,7 @@ export default function Footer() {
               {[
                 { icon: <LinkedinIcon size={16} />, href: 'https://linkedin.com/company/mojakeconsult', label: 'LinkedIn' },
                 { icon: <XIcon size={15} />, href: '#', label: 'X (Twitter)' },
-                { icon: <FacebookIcon size={16} />, href: '#', label: 'Facebook' },
+                { icon: <FacebookIcon size={16} />, href: 'https://www.facebook.com/share/18QRnCf7tr/?mibextid=wwXIfr', label: 'Facebook' },
                 { icon: <InstagramIcon size={16} />, href: 'https://www.instagram.com/mojakeconsult?igsh=c21ucXJrc3Bnd2Np', label: 'Instagram' },
               ].map(({ icon, href, label }) => (
                 <a
