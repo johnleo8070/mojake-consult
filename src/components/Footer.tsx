@@ -1,12 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Phone, Mail, MapPin, Clock, ArrowRight } from 'lucide-react';
 
-const XIcon = ({ size = 16 }: { size?: number }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
-    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
-  </svg>
-);
 
 const LinkedinIcon = ({ size = 16 }: { size?: number }) => (
   <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -107,7 +101,6 @@ export default function Footer() {
             <div className="flex items-center gap-3">
               {[
                 { icon: <LinkedinIcon size={16} />, href: 'https://linkedin.com/company/mojakeconsult', label: 'LinkedIn' },
-                { icon: <XIcon size={15} />, href: '#', label: 'X (Twitter)' },
                 { icon: <FacebookIcon size={16} />, href: 'https://www.facebook.com/share/18QRnCf7tr/?mibextid=wwXIfr', label: 'Facebook' },
                 { icon: <InstagramIcon size={16} />, href: 'https://www.instagram.com/mojakeconsult?igsh=c21ucXJrc3Bnd2Np', label: 'Instagram' },
               ].map(({ icon, href, label }) => (
