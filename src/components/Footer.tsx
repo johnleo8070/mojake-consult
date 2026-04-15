@@ -97,7 +97,7 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <Logo variant="footer" className="mb-6" />
             <p className="text-sm leading-relaxed mb-6" style={{ color: 'rgba(255,255,255,0.6)' }}>
-              Nigeria's leading HR consulting and industrial supply firm. Delivering verified talent, quality materials, and compliance excellence since 2019.
+              Nigeria's leading HR consulting and industrial supply firm. Delivering verified talent, quality materials, and compliance excellence since 2012.
             </p>
             <div className="flex items-center gap-3">
               {[

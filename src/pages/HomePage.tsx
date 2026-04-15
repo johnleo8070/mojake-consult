@@ -96,8 +96,7 @@ const services = [
 ];
 
 const stats = [
-  { value: 500, suffix: '+', label: 'Lives Improved Through Placements', icon: Users },
-  { value: 50, suffix: '+', label: 'Manufacturing Clients Served', icon: Factory },
+  { value: 5000, suffix: '+', label: 'Lives Improved Through Placements', icon: Users },
   { value: 5000, suffix: '+', label: 'Pre-Screened Candidates in Database', icon: Briefcase },
   { value: 72, suffix: 'hrs', label: 'Bulk Deployment Turnaround', icon: Clock },
   { value: 0, suffix: '', prefix: '₦0', label: 'Compliance Penalties for Our Clients', icon: Shield },
@@ -529,7 +528,7 @@ export default function HomePage() {
             <div className="glass-navy rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               {/* Header */}
               <div
-                className="grid grid-cols-3 text-xs font-bold uppercase tracking-wider py-6 px-8"
+                className="grid grid-cols-3 text-[9px] md:text-xs font-bold uppercase tracking-wider py-4 md:py-6 px-2 md:px-8"
                 style={{ background: 'rgba(8, 15, 46, 0.8)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
               >
                 <span className="text-white/50">Feature</span>
@@ -543,7 +542,7 @@ export default function HomePage() {
               {comparison.map((row, i) => (
                 <div
                   key={row.feature}
-                  className="grid grid-cols-3 py-5 px-8 items-center text-sm group"
+                  className="grid grid-cols-3 py-4 md:py-5 px-2 md:px-8 items-center text-[9px] leading-tight md:text-sm md:leading-normal group"
                   style={{
                     borderBottom: i < comparison.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
                     background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)',
@@ -554,7 +553,7 @@ export default function HomePage() {
                     {row.traditional}
                   </span>
                   <div
-                    className="flex items-center justify-center gap-2 py-2 rounded-xl"
+                    className="flex items-center justify-center gap-1 md:gap-2 py-1.5 md:py-2 rounded-xl"
                     style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)' }}
                   >
                     <CheckCircle size={14} className="text-white" />
