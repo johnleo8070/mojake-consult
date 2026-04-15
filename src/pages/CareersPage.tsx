@@ -59,9 +59,9 @@ export default function CareersPage() {
           <div className="max-w-3xl">
             <div
               className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
-              style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+              style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
             >
-              <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
               Join Our Team {jobs.length > 0 ? `— ${jobs.filter((j: any) => j.urgent).length} Urgent Opening${jobs.filter((j: any) => j.urgent).length !== 1 ? 's' : ''}` : '— Opportunities Coming Soon'}
             </div>
             <h1
@@ -69,9 +69,9 @@ export default function CareersPage() {
               style={{ fontFamily: 'Playfair Display, serif' }}
             >
               Build Your Career with{' '}
-              <span className="text-gradient-red">Nigeria's HR & Supply Innovators</span>
+              <span className="text-gradient-silver">Nigeria's HR & Supply Innovators</span>
             </h1>
-            <p className="text-lg md:text-xl mb-10" style={{ color: 'rgba(255,255,255,0.7)' }}>
+            <p className="text-lg md:text-xl mb-10" style={{ color: '#ffffff' }}>
               At Mojake Consult, we don't just fill jobs — we build futures. Join a team that's transforming how Nigeria's manufacturing sector hires, manages, and sources critical supplies.
             </p>
             <div className="flex flex-wrap gap-6">
@@ -109,7 +109,7 @@ export default function CareersPage() {
                 className="text-2xl md:text-3xl font-black mb-3"
                 style={{ color: '#0D1B4B', fontFamily: 'Playfair Display, serif' }}
               >
-                Why Join <span className="text-gradient-red">Mojake?</span>
+                Why Join <span className="text-red">Mojake?</span>
               </h2>
             </div>
           </Section>
@@ -163,7 +163,7 @@ export default function CareersPage() {
               >
                 Current <span className="text-gradient-red">Openings</span>
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.6)' }}>
+              <p style={{ color: '#ffffff' }}>
                 {jobs.length} positions available across Ota, Lagos, and remote
               </p>
             </div>
@@ -317,9 +317,9 @@ export default function CareersPage() {
                 <div
                   className="glass-card mirror rounded-3xl p-10 md:p-16 text-center border transition-all duration-300 transform hover:scale-[1.01]"
                   style={{
-                    borderColor: 'rgba(255,255,255,0.1)',
-                    background: 'rgba(13,27,75,0.4)',
-                    backdropFilter: 'blur(12px)',
+                    borderColor: 'rgba(255,255,255,0.15)',
+                    background: 'rgba(13, 27, 75, 0.75)',
+                    backdropFilter: 'blur(45px) saturate(160%)',
                   }}
                 >
                   <div className="relative inline-flex mb-8">
@@ -337,7 +337,7 @@ export default function CareersPage() {
                   <h3 className="text-3xl md:text-5xl font-black text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
                     Great things are brewing!
                   </h3>
-                  <p className="max-w-2xl mx-auto text-lg md:text-xl mb-10 leading-relaxed font-light" style={{ color: 'rgba(255,255,255,0.8)' }}>
+                  <p className="max-w-2xl mx-auto text-lg md:text-xl mb-10 leading-relaxed font-light" style={{ color: '#ffffff' }}>
                     Our team is currently at full strength, but excellence never sleeps. We are frequently looking for outstanding talent to join our mission. <strong className="text-white font-semibold">Check back soon</strong> for new opportunities—your next big career move might just be around the corner!
                   </p>
                   <Link

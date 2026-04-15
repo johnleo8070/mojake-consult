@@ -80,7 +80,8 @@ export default function Footer() {
               </a>
               <a
                 href="tel:+2347019883073"
-                className="flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white/90 border border-white/20 hover:border-white/50 hover:-translate-y-1 transition-all duration-300"
+                className="flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold transition-all duration-300 hover:-translate-y-1 border border-white/30"
+                style={{ background: '#ffffff', color: '#E8192C' }}
               >
                 <Phone size={14} /> Call: +2347019883073
               </a>

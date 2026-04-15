@@ -92,9 +92,9 @@ export default function ServicesPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 text-center relative z-10">
           <div
             className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
-            style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+            style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
             Comprehensive HR & Supply Solutions
           </div>
           <h1
@@ -102,9 +102,9 @@ export default function ServicesPage() {
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
             End-to-End HR & Supply Solutions{' '}
-            <span className="text-gradient-red">for Nigerian Industry</span>
+            <span className="text-gradient-silver">for Nigerian Industry</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
+          <p className="text-lg md:text-xl max-w-3xl mx-auto" style={{ color: '#ffffff' }}>
             From factory floor staffing to raw materials procurement, Mojake Consult delivers verified talent, quality materials, compliance assurance, and operational excellence for manufacturing and enterprise clients.
           </p>
         </div>
@@ -227,32 +227,37 @@ export default function ServicesPage() {
             >
               HR Management & Compliance Services
             </h2>
-            <p className="max-w-3xl mb-10" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <p className="max-w-3xl mb-10" style={{ color: 'rgba(255,255,255,0.85)' }}>
               Navigate Nigeria's complex regulatory landscape with confidence. Our HR compliance experts manage your statutory obligations, eliminating penalties and administrative burden.
             </p>
 
-            {/* Compliance Table */}
-            <div className="glass-card mirror rounded-3xl overflow-hidden mb-10">
+            {/* Compliance Table — Professional Navy Glass Design */}
+            <div className="glass-navy rounded-3xl overflow-hidden border border-white/10 shadow-2xl mb-10">
               <div
-                className="grid grid-cols-3 text-xs font-bold uppercase tracking-wider py-4 px-6"
-                style={{ background: 'rgba(232,25,44,0.12)', borderBottom: '1px solid rgba(255,255,255,0.08)' }}
+                className="grid grid-cols-3 text-xs font-bold uppercase tracking-wider py-5 px-8"
+                style={{ background: 'rgba(8, 15, 46, 0.8)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
               >
-                <span style={{ color: '#E8192C' }}>Statutory Obligation</span>
-                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Our Service</span>
-                <span style={{ color: 'rgba(255,255,255,0.6)' }}>Penalty for Non-Compliance</span>
+                <span className="text-white font-black">Statutory Obligation</span>
+                <span className="text-white/50">Our Service</span>
+                <span className="text-white/50">Penalty for Non-Compliance</span>
               </div>
               {complianceData.map((row, i) => (
                 <div
                   key={row.obligation}
-                  className="grid grid-cols-3 py-4 px-6 gap-4 text-sm"
+                  className="grid grid-cols-3 py-5 px-8 gap-6 text-sm group"
                   style={{
                     borderBottom: i < complianceData.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
                     background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)',
                   }}
                 >
-                  <span className="font-semibold text-white">{row.obligation}</span>
-                  <span style={{ color: 'rgba(255,255,255,0.7)' }}>{row.service}</span>
-                  <span className="text-xs" style={{ color: 'rgba(232,25,44,0.85)' }}>{row.penalty}</span>
+                  <span className="font-bold text-white group-hover:text-[#E8192C] transition-colors">{row.obligation}</span>
+                  <div className="flex items-center gap-2">
+                    <div className="w-1 h-1 rounded-full bg-white/80" />
+                    <span className="text-white/90">{row.service}</span>
+                  </div>
+                  <span className="text-xs font-medium" style={{ color: 'rgba(255, 255, 255, 0.9)' }}>
+                    {row.penalty}
+                  </span>
                 </div>
               ))}
             </div>
@@ -267,8 +272,8 @@ export default function ServicesPage() {
                   <h4 className="font-bold text-white mb-4 text-sm">{col.title}</h4>
                   <ul className="space-y-2">
                     {col.points.map((p) => (
-                      <li key={p} className="flex items-start gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.65)' }}>
-                        <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#E8192C' }} />
+                      <li key={p} className="flex items-start gap-2 text-sm" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                        <CheckCircle size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#ffffff' }} />
                         {p}
                       </li>
                     ))}
@@ -298,7 +303,7 @@ export default function ServicesPage() {
                   >
                     <Search size={22} className="text-white" />
                   </div>
-                  <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#E8192C' }}>Service 03</span>
+                  <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#ffffff' }}>Service 03</span>
                 </div>
                 <h2
                   id="exec-heading"
@@ -389,7 +394,7 @@ export default function ServicesPage() {
               >
                 <Package size={22} className="text-white" />
               </div>
-              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#E8192C' }}>Service 04</span>
+              <span className="text-xs font-bold tracking-widest uppercase" style={{ color: '#ffffff' }}>Service 04</span>
             </div>
             <h2
               id="supply-heading"
@@ -398,7 +403,7 @@ export default function ServicesPage() {
             >
               Supply of Goods & Materials
             </h2>
-            <p className="max-w-3xl mb-10" style={{ color: 'rgba(255,255,255,0.65)' }}>
+            <p className="max-w-3xl mb-10" style={{ color: 'rgba(255,255,255,0.85)' }}>
               Reliable supply chain solutions for manufacturing operations. We source and deliver quality materials to keep your production lines running without interruption.
             </p>
 
@@ -406,10 +411,10 @@ export default function ServicesPage() {
               {supplyCategories.map((cat) => (
                 <div key={cat.category} className="glass-card mirror rounded-2xl p-6 card-hover">
                   <h3 className="font-bold text-white mb-2">{cat.category}</h3>
-                  <p className="text-sm mb-3" style={{ color: 'rgba(255,255,255,0.55)' }}>{cat.examples}</p>
+                  <p className="text-sm mb-3" style={{ color: 'rgba(255,255,255,0.85)' }}>{cat.examples}</p>
                   <div
                     className="text-xs px-3 py-1.5 rounded-lg inline-block"
-                    style={{ background: 'rgba(232,25,44,0.12)', color: '#E8192C' }}
+                    style={{ background: 'rgba(255, 255, 255, 0.12)', color: '#ffffff' }}
                   >
                     {cat.apps}
                   </div>
@@ -417,7 +422,7 @@ export default function ServicesPage() {
               ))}
             </div>
 
-            <h3 className="text-sm font-bold uppercase tracking-widest mb-5" style={{ color: '#E8192C' }}>
+            <h3 className="text-sm font-bold uppercase tracking-widest mb-5" style={{ color: '#ffffff' }}>
               Our Supply Advantages
             </h3>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -438,7 +443,7 @@ export default function ServicesPage() {
                     <CheckCircle size={14} style={{ color: '#E8192C' }} />
                     <span className="font-bold text-sm text-white">{adv.title}</span>
                   </div>
-                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.55)' }}>{adv.desc}</p>
+                  <p className="text-xs" style={{ color: 'rgba(255,255,255,0.85)' }}>{adv.desc}</p>
                 </div>
               ))}
             </div>
@@ -524,7 +529,7 @@ export default function ServicesPage() {
                 className="text-3xl md:text-4xl font-black mb-4"
                 style={{ color: '#0D1B4B', fontFamily: 'Playfair Display, serif' }}
               >
-                Industry <span className="text-gradient-red">Solutions</span>
+                Industry <span className="text-gradient-silver">Solutions</span>
               </h2>
               <p className="text-gray-600 max-w-2xl mx-auto">
                 Specialized staffing and supply chain solutions tailored to the unique operational demands of Nigeria's critical sectors.
@@ -629,7 +634,7 @@ export default function ServicesPage() {
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
                 Why Mojake for Your{' '}
-                <span className="text-gradient-red">HR & Supply Needs</span>
+                <span className="text-gradient-silver">HR & Supply Needs</span>
               </h2>
             </div>
             <div className="grid md:grid-cols-2 gap-4 mb-12">
@@ -641,7 +646,7 @@ export default function ServicesPage() {
                   <div className="flex-shrink-0 w-2 h-2 rounded-full mt-2" style={{ background: '#E8192C' }} />
                   <div>
                     <div className="text-sm font-semibold text-white mb-0.5">{item.challenge}</div>
-                    <div className="text-xs" style={{ color: 'rgba(255,255,255,0.6)' }}>→ {item.solution}</div>
+                    <div className="text-xs" style={{ color: 'rgba(255,255,255,0.85)' }}>→ {item.solution}</div>
                   </div>
                 </div>
               ))}

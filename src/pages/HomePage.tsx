@@ -101,7 +101,7 @@ const stats = [
   { value: 5000, suffix: '+', label: 'Pre-Screened Candidates in Database', icon: Briefcase },
   { value: 72, suffix: 'hrs', label: 'Bulk Deployment Turnaround', icon: Clock },
   { value: 0, suffix: '', prefix: '₦0', label: 'Compliance Penalties for Our Clients', icon: Shield },
-  { value: 5, suffix: ' Yrs', label: 'Industry Excellence', icon: Award },
+  { value: 5, suffix: ' Yrs +', label: 'Industry Excellence', icon: Award },
 ];
 
 const comparison = [
@@ -176,9 +176,9 @@ export default function HomePage() {
               {/* Badge */}
               <div
                 className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-8 animate-border-pulse"
-                style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+                style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
               >
-                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                 Nigeria's #1 Industrial HR & Supply Partner
               </div>
 
@@ -188,16 +188,16 @@ export default function HomePage() {
               >
                 Transform Your{' '}
                 <span className="relative inline-block">
-                  <span className="text-gradient-red">Workforce</span>
+                  <span className="text-gradient-silver">Workforce</span>
                   <span
                     className="absolute -bottom-1 left-0 right-0 h-1 rounded-full"
-                    style={{ background: 'linear-gradient(90deg, #E8192C, transparent)' }}
+                    style={{ background: 'linear-gradient(90deg, #ffffff, transparent)' }}
                   />
                 </span>{' '}
                 &amp; Supply Chain
               </h1>
 
-              <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: 'rgba(255,255,255,0.72)' }}>
+              <p className="text-lg md:text-xl leading-relaxed mb-10" style={{ color: '#ffffff' }}>
                 From deploying machine operators within 72 hours to providing C-suite executives, ensuring payroll compliance, and supplying raw materials, Mojake Consult offers Nigeria’s most complete HR and industrial solutions.
               </p>
 
@@ -209,8 +209,8 @@ export default function HomePage() {
                   '15-minute response to Agbara & Ogun industrial corridor',
                 ].map((point) => (
                   <li key={point} className="flex items-start gap-3">
-                    <CheckCircle size={18} className="flex-shrink-0 mt-0.5" style={{ color: '#E8192C' }} />
-                    <span className="text-sm" style={{ color: 'rgba(255,255,255,0.75)' }}>{point}</span>
+                    <CheckCircle size={18} className="flex-shrink-0 mt-0.5" style={{ color: '#ffffff' }} />
+                    <span className="text-sm" style={{ color: '#f8f8fc' }}>{point}</span>
                   </li>
                 ))}
               </ul>
@@ -236,38 +236,43 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right — Glass Info Cards */}
+            {/* Right — Hero Image with Floating Data */}
             <div className="relative animate-scale-in hidden lg:block">
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: 'Workers Deployed', value: '500+', sub: 'Since 2019', color: '#E8192C' },
-                  { label: 'Bulk Deployment', value: '72hrs', sub: '50–500 workers', color: '#ffffff' },
-                  { label: 'Compliance Rate', value: '100%', sub: 'Zero penalties', color: '#E8192C' },
-                  { label: 'Coverage', value: 'West Africa', sub: 'Ota → Lagos → Beyond', color: '#ffffff' },
-                ].map((card) => (
-                  <div
-                    key={card.label}
-                    className="glass-card mirror rounded-2xl p-6 card-hover"
-                  >
-                    <div
-                      className="text-3xl font-black mb-1"
-                      style={{ color: card.color === '#ffffff' ? '#ffffff' : '#E8192C' }}
-                    >
-                      {card.value}
-                    </div>
-                    <div className="text-sm font-semibold text-white mb-0.5">{card.label}</div>
-                    <div className="text-xs" style={{ color: 'rgba(255,255,255,0.5)' }}>{card.sub}</div>
-                  </div>
-                ))}
+              {/* Main Image Container */}
+              <div className="relative z-10 rounded-3xl overflow-hidden glass p-3 transform rotate-2 hover:rotate-0 transition-all duration-700 shadow-2xl">
+                <img
+                  src="/hero_business_professionals.png"
+                  alt="Black business professionals collaborating"
+                  className="w-full h-auto rounded-2xl shadow-inner object-cover"
+                />
+                {/* Overlay Gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0D1B4B]/40 to-transparent pointer-events-none" />
+              </div>
+
+              {/* Floating Stat Card 1 */}
+              <div className="absolute -top-10 -right-10 z-20 animate-float" style={{ animationDelay: '1s' }}>
+                <div className="glass-white p-5 rounded-2xl shadow-xl border border-white/50">
+                  <div className="text-2xl font-black text-[#0D1B4B]">500+</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-gray-500">Lives Impacted</div>
+                </div>
+              </div>
+
+              {/* Floating Stat Card 2 */}
+              <div className="absolute top-1/2 -left-12 z-20 animate-float" style={{ animationDelay: '0.5s' }}>
+                <div className="glass-navy p-5 rounded-2xl shadow-xl border border-white/10 backdrop-blur-xl">
+                  <div className="text-2xl font-black text-white">100%</div>
+                  <div className="text-[10px] uppercase tracking-wider font-bold text-white/60">Compliance Rate</div>
+                </div>
               </div>
 
               {/* Floating Badge */}
               <div
-                className="glass-card mirror absolute -bottom-6 -left-6 px-5 py-4 rounded-2xl animate-float"
+                className="glass-card absolute -bottom-12 -right-6 z-20 px-6 py-4 rounded-2xl animate-float shadow-2xl border border-white/20"
+                style={{ animationDelay: '1.5s' }}
               >
                 <div className="flex items-center gap-3">
                   <div
-                    className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg mirror"
+                    className="w-10 h-10 rounded-xl flex items-center justify-center text-white text-lg"
                     style={{ background: 'linear-gradient(135deg, #E8192C, #b8111f)' }}
                   >
                     ⭐
@@ -278,6 +283,9 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+
+              {/* Decorative Glow */}
+              <div className="absolute -inset-4 bg-white/5 blur-2xl rounded-full -z-10" />
             </div>
           </div>
         </div>
@@ -285,7 +293,7 @@ export default function HomePage() {
         {/* Scroll Indicator */}
         <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
           <div className="w-px h-12 bg-gradient-to-b from-transparent via-white/40 to-transparent" />
-          <span className="text-[10px] tracking-widest uppercase" style={{ color: 'rgba(255,255,255,0.4)' }}>
+          <span className="text-[10px] tracking-widest uppercase font-bold" style={{ color: 'rgba(255,255,255,0.7)' }}>
             Scroll
           </span>
         </div>
@@ -309,11 +317,11 @@ export default function HomePage() {
               <div key={s.label} className="text-center">
                 <div
                   className="text-2xl md:text-3xl font-black mb-1"
-                  style={{ color: '#E8192C' }}
+                  style={{ color: '#ffffff' }}
                 >
                   <Counter end={s.value} suffix={s.suffix} prefix={s.prefix} />
                 </div>
-                <div className="text-xs leading-tight" style={{ color: 'rgba(255,255,255,0.6)' }}>
+                <div className="text-xs leading-tight font-medium" style={{ color: 'rgba(255,255,255,0.9)' }}>
                   {s.label}
                 </div>
               </div>
@@ -363,8 +371,8 @@ export default function HomePage() {
 
           <div className="grid lg:grid-cols-2 gap-8 mt-16 items-stretch">
             <Section>
-              <div className="glass-card mirror rounded-3xl p-8 lg:p-12 border h-full" style={{ background: 'rgba(13,27,75,0.02)', borderColor: 'rgba(13,27,75,0.05)' }}>
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8 mirror" style={{ background: 'linear-gradient(135deg, #0D1B4B, #152266)' }}>
+              <div className="glass-card rounded-3xl p-8 lg:p-12 border h-full" style={{ background: 'rgba(13,27,75,0.02)', borderColor: 'rgba(13,27,75,0.05)' }}>
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-8" style={{ background: 'linear-gradient(135deg, #0D1B4B, #152266)' }}>
                   <Users size={24} className="text-white" />
                 </div>
                 <h3 className="text-3xl font-black mb-6" style={{ color: '#0D1B4B', fontFamily: 'Playfair Display, serif' }}>Our Approach</h3>
@@ -382,14 +390,14 @@ export default function HomePage() {
                     </p>
                   </div>
                 </div>
-                <Link to="/services" className="inline-flex items-center gap-2 mt-8 text-sm font-bold hover:gap-3 transition-all uppercase tracking-wider" style={{ color: '#E8192C' }}>
+                <Link to="/services" className="inline-flex items-center gap-2 mt-8 text-sm font-bold hover:gap-3 transition-all uppercase tracking-wider" style={{ color: '#ffffff' }}>
                   Know More <ChevronRight size={16} />
                 </Link>
               </div>
             </Section>
 
             <Section>
-              <div className="glass-card mirror rounded-3xl p-8 lg:p-12 border h-full flex flex-col justify-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #080f2e 0%, #0D1B4B 100%)' }}>
+              <div className="glass-card rounded-3xl p-8 lg:p-12 border h-full flex flex-col justify-center relative overflow-hidden" style={{ background: 'linear-gradient(135deg, #080f2e 0%, #0D1B4B 100%)' }}>
                 <div className="absolute top-0 right-0 w-64 h-64 bg-red-500 rounded-full blur-[100px] opacity-20 -mr-20 -mt-20 pointer-events-none" />
                 <h3 className="text-3xl font-black mb-6 text-white" style={{ fontFamily: 'Playfair Display, serif' }}>Why Choose Us ?</h3>
                 <p className="text-white/80 text-lg leading-relaxed relative z-10">
@@ -430,9 +438,9 @@ export default function HomePage() {
                     to={svc.href}
                     className="group block h-full rounded-2xl p-7 card-hover transition-all duration-300 border"
                     style={{
-                      background: 'rgba(255,255,255,0.9)',
-                      borderColor: 'rgba(13,27,75,0.08)',
-                      backdropFilter: 'blur(10px)',
+                      background: 'rgba(255,255,255,0.98)',
+                      borderColor: 'rgba(13,27,75,0.12)',
+                      backdropFilter: 'blur(32px)',
                     }}
                   >
                     {/* Icon */}
@@ -508,42 +516,49 @@ export default function HomePage() {
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
                 The Mojake Difference:{' '}
-                <span className="text-gradient-red">Partnership, Precision, Performance</span>
+                <span className="text-gradient-silver">Partnership, Precision, Performance</span>
               </h2>
-              <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.65)' }}>
+              <p className="text-lg max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.85)' }}>
                 See how Mojake Consult outperforms traditional agencies across every critical dimension.
               </p>
             </div>
           </Section>
 
-          {/* Comparison Table — Glass + Mirror */}
+          {/* Comparison Table — Professional Navy Glass Design */}
           <Section>
-            <div className="glass-card mirror rounded-3xl overflow-hidden">
+            <div className="glass-navy rounded-3xl overflow-hidden border border-white/10 shadow-2xl">
               {/* Header */}
               <div
-                className="grid grid-cols-3 text-xs font-bold uppercase tracking-wider py-4 px-6"
-                style={{ background: 'rgba(232,25,44,0.15)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
+                className="grid grid-cols-3 text-xs font-bold uppercase tracking-wider py-6 px-8"
+                style={{ background: 'rgba(8, 15, 46, 0.8)', borderBottom: '1px solid rgba(255,255,255,0.1)' }}
               >
-                <span style={{ color: 'rgba(255,255,255,0.5)' }}>Feature</span>
-                <span className="text-center" style={{ color: 'rgba(255,255,255,0.5)' }}>Traditional Agencies</span>
-                <span className="text-center" style={{ color: '#E8192C' }}>Mojake Consult</span>
+                <span className="text-white/50">Feature</span>
+                <span className="text-center text-white/50">Traditional Agencies</span>
+                <span className="text-center text-white relative">
+                  Mojake Consult
+                  <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-12 h-0.5 bg-[#E8192C]" />
+                </span>
               </div>
+
               {comparison.map((row, i) => (
                 <div
                   key={row.feature}
-                  className="grid grid-cols-3 py-4 px-6 items-center text-sm"
+                  className="grid grid-cols-3 py-5 px-8 items-center text-sm group"
                   style={{
-                    borderBottom: i < comparison.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
+                    borderBottom: i < comparison.length - 1 ? '1px solid rgba(255,255,255,0.05)' : 'none',
                     background: i % 2 === 0 ? 'transparent' : 'rgba(255,255,255,0.02)',
                   }}
                 >
-                  <span className="font-semibold text-white">{row.feature}</span>
-                  <span className="text-center" style={{ color: 'rgba(255,255,255,0.4)' }}>
+                  <span className="font-bold text-white group-hover:text-[#E8192C] transition-colors">{row.feature}</span>
+                  <span className="text-center text-white/60">
                     {row.traditional}
                   </span>
-                  <div className="flex items-center justify-center gap-2">
-                    <CheckCircle size={14} style={{ color: '#E8192C', flexShrink: 0 }} />
-                    <span className="font-medium" style={{ color: 'rgba(255,255,255,0.85)' }}>
+                  <div
+                    className="flex items-center justify-center gap-2 py-2 rounded-xl"
+                    style={{ background: 'rgba(255, 255, 255, 0.05)', border: '1px solid rgba(255, 255, 255, 0.1)' }}
+                  >
+                    <CheckCircle size={14} className="text-white" />
+                    <span className="font-bold text-white">
                       {row.mojake}
                     </span>
                   </div>
@@ -576,19 +591,19 @@ export default function HomePage() {
                 className="text-3xl md:text-4xl font-black text-white mb-4"
                 style={{ fontFamily: 'Playfair Display, serif' }}
               >
-                From <span className="text-gradient-red">Ota</span> to West Africa
+                From <span className="text-gradient-silver">Ota</span> to West Africa
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.6)' }}>Strategic coverage across Nigeria's industrial corridor and beyond</p>
+              <p style={{ color: 'rgba(255,255,255,0.85)' }}>Strategic coverage across Nigeria's industrial corridor and beyond</p>
             </div>
           </Section>
 
           <div className="grid md:grid-cols-3 gap-6">
             {coverage.map((zone, i) => (
               <Section key={zone.zone}>
-                <div className="glass-card mirror rounded-2xl p-7 h-full">
+                <div className="glass-card rounded-2xl p-7 h-full">
                   <div className="flex items-center gap-3 mb-5">
                     <div
-                      className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold mirror"
+                      className="w-8 h-8 rounded-lg flex items-center justify-center text-white text-xs font-bold"
                       style={{
                         background: i === 0
                           ? 'linear-gradient(135deg, #E8192C, #b8111f)'
@@ -603,8 +618,8 @@ export default function HomePage() {
                   <ul className="space-y-2.5">
                     {zone.locations.map((loc) => (
                       <li key={loc} className="flex items-start gap-2">
-                        <MapPin size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#E8192C' }} />
-                        <span className="text-sm" style={{ color: 'rgba(255,255,255,0.7)' }}>{loc}</span>
+                        <MapPin size={13} className="flex-shrink-0 mt-0.5" style={{ color: '#ffffff' }} />
+                        <span className="text-sm" style={{ color: 'rgba(255,255,255,0.9)' }}>{loc}</span>
                       </li>
                     ))}
                   </ul>
@@ -625,7 +640,7 @@ export default function HomePage() {
                 className="text-3xl md:text-5xl font-black mb-4"
                 style={{ color: '#0D1B4B', fontFamily: 'Playfair Display, serif' }}
               >
-                Industries <span className="text-gradient-red">We Serve</span>
+                Industries <span className="text-gradient-silver">We Serve</span>
               </h2>
               <p className="text-gray-600 text-lg leading-relaxed">
                 Empowering Nigeria’s core economic sectors with robust workforce flexibility and uncompromised supply chain solutions.
@@ -678,7 +693,7 @@ export default function HomePage() {
               >
                 Why We <span className="text-gradient-red">Are Different</span>
               </h2>
-              <p className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#E8192C' }}>
+              <p className="text-xl md:text-2xl font-bold mb-6" style={{ color: '#ffffff' }}>
                 We are diverse. We are efficient. We deliver, all the time.
               </p>
               <p className="text-gray-600 text-lg leading-relaxed">

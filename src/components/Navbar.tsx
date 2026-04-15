@@ -42,8 +42,19 @@ export default function Navbar() {
     setMobileDropdownOpen(false);
   }, [location.pathname]);
 
-  const isActive = (path: string) =>
-    path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
+  const isActive = (path: string) => {
+    if (path === '/') return location.pathname === '/';
+    // If it's a hash link, check both path and hash
+    if (path.includes('#')) {
+      const [pathname, hash] = path.split('#');
+      return location.pathname === pathname && location.hash === `#${hash}`;
+    }
+    // Only highlight parent if on the same base path and not a specific hash link
+    if (path === '/services' && location.pathname === '/services' && location.hash) {
+      return true;
+    }
+    return path === '/' ? location.pathname === '/' : location.pathname.startsWith(path);
+  };
 
   return (
     <>
@@ -120,11 +131,21 @@ export default function Navbar() {
 
                 {link.dropdown && (
                   <div className="absolute left-0 top-full mx-auto mt-2 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 glass-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-xl border border-gray-100 py-2 overflow-hidden z-[100]">
-                    {link.dropdown.map(drop => (
-                      <a href={drop.path} key={drop.path} className="block px-4 py-2.5 text-sm text-gray-700 hover:text-red-600 hover:bg-gray-50/80 transition-colors">
-                        {drop.label}
-                      </a>
-                    ))}
+                    {link.dropdown.map(drop => {
+                      const activeItem = isActive(drop.path);
+                      return (
+                        <a
+                          href={drop.path}
+                          key={drop.path}
+                          className={`block px-4 py-2.5 text-sm transition-colors border-l-2 ${activeItem
+                            ? 'text-[#E8192C] bg-red-50/50 border-[#E8192C] font-bold'
+                            : 'text-gray-700 hover:text-[#E8192C] hover:bg-gray-50/80 border-transparent'
+                            }`}
+                        >
+                          {drop.label}
+                        </a>
+                      );
+                    })}
                   </div>
                 )}
               </li>
@@ -191,11 +212,22 @@ export default function Navbar() {
                 {link.dropdown && (
                   <div className={`pl-4 overflow-hidden transition-all duration-300 ${mobileDropdownOpen ? 'max-h-96 opacity-100 mt-1 mb-2' : 'max-h-0 opacity-0'}`}>
                     <div className="border-l-2 border-red-100 ml-6 space-y-1">
-                      {link.dropdown.map(drop => (
-                        <a href={drop.path} key={drop.path} onClick={() => setMobileOpen(false)} className="block px-4 py-2.5 text-sm text-gray-600 hover:text-red-600 rounded-lg hover:bg-gray-50/50 transition-colors">
-                          {drop.label}
-                        </a>
-                      ))}
+                      {link.dropdown.map(drop => {
+                        const activeItem = isActive(drop.path);
+                        return (
+                          <a
+                            href={drop.path}
+                            key={drop.path}
+                            onClick={() => setMobileOpen(false)}
+                            className={`block px-4 py-2.5 text-sm transition-colors rounded-lg border-l-2 ${activeItem
+                                ? 'text-[#E8192C] bg-red-50/50 border-[#E8192C] font-bold'
+                                : 'text-gray-600 hover:text-[#E8192C] hover:bg-gray-50/50 border-transparent'
+                              }`}
+                          >
+                            {drop.label}
+                          </a>
+                        );
+                      })}
                     </div>
                   </div>
                 )}

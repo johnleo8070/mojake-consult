@@ -123,15 +123,15 @@ export default function ApplyJobPage() {
                         <div className="text-center mb-10">
                             <div
                                 className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
-                                style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+                                style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
                             >
-                                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                                 Application Form
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-                                Join <span className="text-gradient-red">Mo-Jake Consult</span>
+                                Join <span className="text-gradient-silver">Mo-Jake Consult</span>
                             </h1>
-                            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                            <p className="text-lg text-white max-w-2xl mx-auto">
                                 Drive your career forward with our expertise. Fill out the application form below and take the next step in your professional journey.
                             </p>
                         </div>
@@ -141,29 +141,29 @@ export default function ApplyJobPage() {
                                 <form onSubmit={handleSubmit}>
                                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Full Name *</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Full Name *</label>
                                             <input name="name" required value={form.name} onChange={handleChange} placeholder="John Doe" style={inputStyle} />
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Email Address *</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Email Address *</label>
                                             <input name="email" type="email" required value={form.email} onChange={handleChange} placeholder="john@example.com" style={inputStyle} />
                                         </div>
                                     </div>
 
                                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Phone Number *</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Phone Number *</label>
                                             <input name="phone" required value={form.phone} onChange={handleChange} placeholder="+234 800 000 0000" style={inputStyle} />
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Role Applied For *</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Role Applied For *</label>
                                             <input name="role" required value={form.role} onChange={handleChange} placeholder="e.g. Machine Operator" style={inputStyle} />
                                         </div>
                                     </div>
 
                                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Years of Experience</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Years of Experience</label>
                                             <select name="experience" value={form.experience} onChange={handleChange} style={{ ...inputStyle, cursor: 'pointer' }}>
                                                 <option value="" style={{ background: '#0D1B4B' }}>Select...</option>
                                                 <option value="entry" style={{ background: '#0D1B4B' }}>Entry Level (0-2 years)</option>
@@ -173,24 +173,24 @@ export default function ApplyJobPage() {
                                             </select>
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Upload Resume / CV *</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Upload Resume / CV *</label>
                                             <input type="file" required onChange={(e) => handleFileChange(e, 'attachmentCv')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
                                         </div>
                                     </div>
 
                                     <div className="grid md:grid-cols-2 gap-6 mb-6">
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Cover Letter (Optional)</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Cover Letter (Optional)</label>
                                             <input type="file" onChange={(e) => handleFileChange(e, 'attachmentCover')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
                                         </div>
                                         <div>
-                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50">Other Documents (Optional)</label>
+                                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80">Other Documents (Optional)</label>
                                             <input type="file" onChange={(e) => handleFileChange(e, 'attachmentOther')} style={{ ...inputStyle, padding: '9px 16px', background: 'rgba(255,255,255,0.03)' }} accept=".pdf,.doc,.docx" />
                                         </div>
                                     </div>
 
                                     <div className="mb-8">
-                                        <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/50"> Additional Info</label>
+                                        <label className="block text-xs font-semibold mb-2 uppercase tracking-wider text-white/80"> Additional Info</label>
                                         <textarea name="message" value={form.message} onChange={handleChange} rows={5} placeholder="Tell us why you're a great fit..." style={{ ...inputStyle, resize: 'vertical' }} />
                                     </div>
 
@@ -214,7 +214,7 @@ export default function ApplyJobPage() {
                                         <CheckCircle size={48} className="text-white" />
                                     </div>
                                     <h3 className="text-3xl font-black text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Application Received!</h3>
-                                    <p className="text-lg text-white/70">
+                                    <p className="text-lg text-white/80">
                                         Thank you for applying, <strong className="text-white">{form.name}</strong>. Our talent acquisition team will review your CV and be in touch shortly.
                                     </p>
                                 </div>

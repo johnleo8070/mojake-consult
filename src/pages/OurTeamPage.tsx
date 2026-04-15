@@ -23,18 +23,24 @@ export default function OurTeamPage() {
             role: 'Managing Director',
             bio: 'Our team is led by Veronica Ayebae-Jaiyeola, a seasoned businesswoman with extensive experience -30+ years in entrepreneurship and management- and a strong track record of success. Veronica has served as Managing Director at Justim Enterprises and El-Shadai Stores, where she honed her exceptional business acumen and dedication to customer service. With a wealth of experience in both public and private sectors, she brings a unique perspective to management and consulting. She is also a passionate educator, deeply committed to training and development. Her role on the board of several organizations further exemplifies her dedication to making a meaningful impact. Veronica is known for her goal-oriented mindset and ability to inspire and motivate teams. As a leader, she encourages collaboration and fosters an environment that nurtures success.',
             image: '/team-veronica.jpg',
+            email: 'emike@mojakeconsult.com',
+            linkedin: null,
         },
         {
             name: 'Joseph Jaiyeola',
-            role: 'Operations Director',
+            role: 'Board Member',
             bio: "Joseph is a Management Consultant who enhances operational efficiency, team productivity, and employee motivation. He is a Proactive and focused leader with exceptional organizational, critical thinking, and prioritization skills. Joseph is adept at developing and executing targeted relationship and account development strategies, resolving customer complaints, and generating new business leads through direct customer engagement. Joseph has a bachelor's degree in International Law and Diplomacy; a postgraduate in International Conflicts and an MBA in Management. He is a Certified Scrum Master and a Certified Agile Leader. As a seasoned professional, Joseph brings expertise in diverse organizational environments, consistently driving positive results and contributing to business success.",
             image: '/team-joseph.jpg',
+            email: 'simplymanifest1@gmail.com',
+            linkedin: 'https://www.linkedin.com/in/joseph-jaiyeola',
         },
         {
             name: 'Emmanuel Jaiyeola',
-            role: 'General manager',
+            role: 'General Manager',
             bio: 'Emmanuel possesses a wealth of marketing and recruiting experience having worked as Managing Director at Talhub Ltd, a recruitment and staffing company, and Emmtol Consults, an immigration and investment consultation outfit, with national and international acclaim and Marketing Manager at Fintech Legal Centre. He holds postgraduate degrees in Business Administration, Project Management and International Marketing. He is currently concluding his doctorate degree in Business Administration. He is a dynamic administrator and an excellent communicator.',
             image: '/team-Emmanuel.jpg',
+            email: 'ejaiyeola@mojakeconsult.com',
+            linkedin: 'https://www.linkedin.com/in/emmanuel-jaiyeola',
         }
     ];
 
@@ -50,9 +56,9 @@ export default function OurTeamPage() {
                         Executive Leadership
                     </span>
                     <h1 className="text-4xl md:text-5xl lg:text-7xl font-black text-white mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                        Meet Our <span className="text-gradient-red">Leadership Team</span>
+                        Meet Our <span className="text-gradient-silver">Leadership Team</span>
                     </h1>
-                    <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto font-light leading-relaxed">
+                    <p className="text-lg md:text-xl text-white max-w-3xl mx-auto font-light leading-relaxed">
                         Dedicated experts driving innovation and excellence across the HR and administrative landscape.
                     </p>
                 </div>
@@ -117,10 +123,20 @@ function TeamCard({ member }: { member: any }) {
 
                     {/* Social Floating Icons */}
                     <div className="mt-10 flex gap-4">
-                        <a href="#" className="w-12 h-12 rounded-2xl bg-[#E8192C] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all">
-                            <LinkedinIcon size={20} />
-                        </a>
-                        <a href="#" className="w-12 h-12 rounded-2xl bg-white text-navy flex items-center justify-center shadow-lg border border-gray-100 hover:bg-gray-50 hover:scale-110 transition-all">
+                        {member.linkedin && (
+                            <a
+                                href={member.linkedin}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="w-12 h-12 rounded-2xl bg-[#E8192C] text-white flex items-center justify-center shadow-lg hover:scale-110 transition-all"
+                            >
+                                <LinkedinIcon size={20} />
+                            </a>
+                        )}
+                        <a
+                            href={`mailto:${member.email}`}
+                            className="w-12 h-12 rounded-2xl bg-white text-navy flex items-center justify-center shadow-lg border border-gray-100 hover:bg-gray-50 hover:scale-110 transition-all"
+                        >
                             <Mail size={20} />
                         </a>
                     </div>

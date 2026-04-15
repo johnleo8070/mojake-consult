@@ -95,18 +95,18 @@ export default function ContactPage() {
         <div className="max-w-7xl mx-auto px-4 md:px-6 relative z-10 text-center">
           <div
             className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
-            style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+            style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
           >
-            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
             24/7 Support for Manufacturing Clients
           </div>
           <h1
             className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6"
             style={{ fontFamily: 'Playfair Display, serif' }}
           >
-            Let's <span className="text-gradient-red">Start a Conversation</span>
+            Let's <span className="text-gradient-silver">Start a Conversation</span>
           </h1>
-          <p className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: 'rgba(255,255,255,0.7)' }}>
+          <p className="text-lg md:text-xl max-w-2xl mx-auto" style={{ color: '#ffffff' }}>
             Ready to transform your workforce or supply chain? Our team is standing by to discuss how Mojake Consult can deliver results for your business.
           </p>
         </div>
@@ -179,7 +179,7 @@ export default function ContactPage() {
                             target={href.startsWith('http') ? '_blank' : undefined}
                             rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
                             className="block text-sm hover:text-white transition-colors"
-                            style={{ color: 'rgba(255,255,255,0.7)' }}
+                            style={{ color: '#ffffff' }}
                           >
                             {line}
                           </a>
@@ -230,13 +230,13 @@ export default function ContactPage() {
                       >
                         Send Us a Message
                       </h3>
-                      <p className="text-sm mb-8" style={{ color: 'rgba(255,255,255,0.55)' }}>
+                      <p className="text-sm mb-8" style={{ color: 'rgba(255,255,255,0.9)' }}>
                         Fill out the form below and our team will get back to you within 24 hours.
                       </p>
                       <form onSubmit={handleSubmit} noValidate>
                         <div className="grid sm:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.85)' }}>
                               Full Name *
                             </label>
                             <input
@@ -250,7 +250,7 @@ export default function ContactPage() {
                             />
                           </div>
                           <div>
-                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.85)' }}>
                               Email Address *
                             </label>
                             <input
@@ -266,7 +266,7 @@ export default function ContactPage() {
                         </div>
                         <div className="grid sm:grid-cols-2 gap-4 mb-4">
                           <div>
-                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.85)' }}>
                               Company Name
                             </label>
                             <input
@@ -278,7 +278,7 @@ export default function ContactPage() {
                             />
                           </div>
                           <div>
-                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                            <label className="block text-xs font-semibold mb-2 uppercase tracking-wider" style={{ color: 'rgba(255,255,255,0.85)' }}>
                               Phone Number
                             </label>
                             <input
@@ -352,7 +352,7 @@ export default function ContactPage() {
                             </>
                           )}
                         </button>
-                        <p className="text-xs text-center mt-4" style={{ color: 'rgba(255,255,255,0.3)' }}>
+                        <p className="text-xs text-center mt-4" style={{ color: 'rgba(255,255,255,0.75)' }}>
                           Your information is secure and will never be shared. We respond within 24 hours.
                         </p>
                       </form>
@@ -368,10 +368,10 @@ export default function ContactPage() {
                       <h3 className="text-2xl font-black text-white mb-3" style={{ fontFamily: 'Playfair Display, serif' }}>
                         Message Sent!
                       </h3>
-                      <p className="mb-2" style={{ color: 'rgba(255,255,255,0.65)' }}>
+                      <p className="mb-2" style={{ color: '#ffffff' }}>
                         Thank you, <strong className="text-white">{form.name}</strong>! We've received your enquiry.
                       </p>
-                      <p className="text-sm mb-8" style={{ color: 'rgba(255,255,255,0.5)' }}>
+                      <p className="text-sm mb-8" style={{ color: 'rgba(255,255,255,0.9)' }}>
                         Our team will respond within 24 hours. For urgent matters, call us directly.
                       </p>
                       <a

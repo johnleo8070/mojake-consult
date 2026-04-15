@@ -113,15 +113,15 @@ export default function HirePage() {
                         <div className="text-center mb-10">
                             <div
                                 className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6"
-                                style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+                                style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
                             >
-                                <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                                <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                                 Hire request Form
                             </div>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6" style={{ fontFamily: 'Playfair Display, serif' }}>
-                                Hire With <span className="text-gradient-red">Mo-Jake Consult</span>
+                                Hire With <span className="text-gradient-silver">Mo-Jake Consult</span>
                             </h1>
-                            <p className="text-lg text-white/70 max-w-2xl mx-auto">
+                            <p className="text-lg text-white max-w-2xl mx-auto">
                                 Drive your business forward with our expertise. Tell us your talent requirements and let us supply the perfect fit.
                             </p>
                         </div>
@@ -204,7 +204,7 @@ export default function HirePage() {
                                         <CheckCircle size={48} className="text-white" />
                                     </div>
                                     <h3 className="text-3xl font-black text-white mb-4" style={{ fontFamily: 'Playfair Display, serif' }}>Request Sent successfully!</h3>
-                                    <p className="text-lg text-white/70">
+                                    <p className="text-lg text-white">
                                         Thank you from <strong className="text-white">{form.company}</strong>. Our business development team will contact you shortly to provide the perfect talent.
                                     </p>
                                 </div>

@@ -17,7 +17,7 @@ export default function GalleryPage() {
             {/* Hero Section */}
             <section className="pt-32 pb-16 lg:pt-40 lg:pb-24 bg-[#0D1B4B] text-center px-4">
                 <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">Our Gallery</h1>
-                <p className="text-lg text-gray-300 max-w-2xl mx-auto">
+                <p className="text-lg text-white max-w-2xl mx-auto">
                     A visual glimpse into our daily operations, our dedicated teams, and the excellence we deliver across all sectors.
                 </p>
             </section>

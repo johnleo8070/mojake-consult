@@ -23,13 +23,13 @@ export default function AboutCompanyPage() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
                     <div className="max-w-3xl">
                         <span className="inline-flex items-center gap-2 py-1.5 px-4 rounded-full bg-white/10 border border-white/20 text-white text-xs font-bold tracking-wider mb-8">
-                            <span className="w-2 h-2 rounded-full bg-[#E8192C] animate-pulse" />
+                            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                             ABOUT THE COMPANY
                         </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 leading-tight" style={{ fontFamily: 'Playfair Display, serif' }}>
-                            We help you build a valuable and <span className="text-gradient-red">long-lasting business</span>
+                            We help you build a valuable and <span className="text-gradient-silver">long-lasting business</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-white/80 mb-10 leading-relaxed max-w-2xl font-light">
+                        <p className="text-lg md:text-xl text-white mb-10 leading-relaxed max-w-2xl font-light">
                             Our work at Mo-Jake Consult goes beyond just management, staffing and consulting. We help you build a valuable and long-lasting business with the right human resources and great management options that maximize your business potential and help you achieve business goals.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4">

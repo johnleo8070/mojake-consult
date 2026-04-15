@@ -22,13 +22,13 @@ export default function EmployersPage() {
                 </div>
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
                     <div className="max-w-3xl">
-                        <span className="inline-block py-1 px-3 rounded-full bg-red-600/20 border border-red-500/30 text-red-400 text-sm font-semibold tracking-wider mb-6">
+                        <span className="inline-block py-1.5 px-4 rounded-full bg-white/10 border border-white/30 text-white text-xs font-bold tracking-wider mb-8">
                             FOR EMPLOYERS
                         </span>
                         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
                             Scale Your Operations with <span className="text-[#E8192C]">Elite Talent</span>
                         </h1>
-                        <p className="text-lg md:text-xl text-gray-300 mb-10 leading-relaxed max-w-2xl">
+                        <p className="text-lg md:text-xl text-white mb-10 leading-relaxed max-w-2xl">
                             We provide tailored staffing, raw materials supply, and compliance management customized to fit your organization's unique requirements.
                         </p>
                         <Link

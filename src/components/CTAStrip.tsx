@@ -56,7 +56,11 @@ export default function CTAStrip() {
                         </Link>
                         <Link
                             to="/apply"
-                            className="glass flex items-center justify-center gap-2 px-12 py-5 rounded-2xl font-black text-white text-base border border-white/30 hover:bg-white/10 hover:-translate-y-2 transition-all uppercase tracking-wider"
+                            className="glass flex items-center justify-center gap-2 px-12 py-5 rounded-2xl font-black text-[#E8192C] text-base border border-white/30 hover:bg-white/10 hover:-translate-y-2 transition-all uppercase tracking-wider"
+                            style={{
+                                background: '#ffffffff',
+                                boxShadow: '0 8px 30px rgba(232,25,44,0.4)',
+                            }}
                         >
                             Apply
                         </Link>

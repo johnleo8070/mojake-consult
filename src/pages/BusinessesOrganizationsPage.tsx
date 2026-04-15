@@ -55,9 +55,9 @@ export default function BusinessesOrganizationsPage() {
                     <div className="max-w-3xl animate-fade-up">
                         <div
                             className="glass inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold mb-6 animate-border-pulse"
-                            style={{ color: '#E8192C', borderColor: 'rgba(232,25,44,0.3)' }}
+                            style={{ color: '#ffffff', borderColor: 'rgba(255,255,255,0.3)' }}
                         >
-                            <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                            <span className="w-2 h-2 rounded-full bg-white animate-pulse" />
                             Welcome to Mo-Jake Consult
                         </div>
 
@@ -65,14 +65,14 @@ export default function BusinessesOrganizationsPage() {
                             className="text-4xl md:text-5xl lg:text-7xl font-black text-white leading-tight mb-6"
                             style={{ fontFamily: 'Playfair Display, serif' }}
                         >
-                            For <span className="text-gradient-red">Businesses</span> &amp; Organizations
+                            For <span className="text-gradient-silver">Businesses</span> &amp; Organizations
                         </h1>
 
                         <p className="text-xl md:text-2xl font-bold mb-4" style={{ color: 'rgba(255,255,255,0.9)' }}>
                             We are a reliable network of human connections.
                         </p>
 
-                        <p className="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl" style={{ color: 'rgba(255,255,255,0.72)' }}>
+                        <p className="text-lg md:text-xl leading-relaxed mb-10 max-w-2xl" style={{ color: '#ffffff' }}>
                             Make The Right Business Decisions When You Consult With Us. Unleash your organization’s full potential when you strategically consult with us on business management, policy alignment, strategy review and business development.
                         </p>
 
@@ -117,7 +117,7 @@ export default function BusinessesOrganizationsPage() {
                                 className="text-3xl md:text-5xl font-black mb-6"
                                 style={{ color: '#0D1B4B', fontFamily: 'Playfair Display, serif' }}
                             >
-                                Time to <span className="text-gradient-red">Grow</span>
+                                Time to <span className="text-gradient-silver">Grow</span>
                             </h2>
                             <h3 className="text-2xl font-bold text-gray-800 mb-6">
                                 Let Us Look For You
