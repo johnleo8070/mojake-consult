@@ -101,7 +101,7 @@ const stats = [
   { value: 5000, suffix: '+', label: 'Pre-Screened Candidates in Database', icon: Briefcase },
   { value: 72, suffix: 'hrs', label: 'Bulk Deployment Turnaround', icon: Clock },
   { value: 0, suffix: '', prefix: '₦0', label: 'Compliance Penalties for Our Clients', icon: Shield },
-  { value: 5, suffix: ' Yrs +', label: 'Industry Excellence', icon: Award },
+  { value: 5, suffix: '+ Yrs ', label: 'Industry Excellence', icon: Award },
 ];
 
 const comparison = [
