@@ -251,7 +251,7 @@ export default function HomePage() {
               {/* Floating Stat Card 1 */}
               <div className="absolute -top-10 -right-10 z-20 animate-float" style={{ animationDelay: '1s' }}>
                 <div className="glass-white p-5 rounded-2xl shadow-xl border border-white/50">
-                  <div className="text-2xl font-black text-[#0D1B4B]">500+</div>
+                  <div className="text-2xl font-black text-[#0D1B4B]">5000+</div>
                   <div className="text-[10px] uppercase tracking-wider font-bold text-gray-500">Lives Impacted</div>
                 </div>
               </div>
@@ -289,13 +289,6 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-          <div className="w-px h-12 bg-gradient-to-b from-transparent via-white/40 to-transparent" />
-          <span className="text-[10px] tracking-widest uppercase font-bold" style={{ color: 'rgba(255,255,255,0.7)' }}>
-            Scroll
-          </span>
-        </div>
       </section>
 
       {/* ═══ STATS BAR ══════════════════════════════════════════════ */}
