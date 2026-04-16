@@ -73,7 +73,8 @@ export default function Footer() {
                 Schedule Free Consultation <ArrowRight size={16} />
               </Link>
               <a
-                href="#brochure"
+                href="/Mojake_Brochure-1.pdf"
+                download="Mojake_Service_Brochure.pdf"
                 className="glass flex items-center gap-2 px-8 py-4 rounded-2xl text-sm font-bold text-white border border-white/30 hover:-translate-y-1 transition-all duration-300"
               >
                 Download Service Brochure
