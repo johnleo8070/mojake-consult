@@ -20,7 +20,7 @@ const navLinks = [
   },
   { label: 'Businesses & Orgs', path: '/businesses-organizations' },
   { label: 'Our Team', path: '/our-team' },
-  { label: 'Gallery', path: '/gallery' },
+  // { label: 'Gallery', path: '/gallery' },
   { label: 'Careers', path: '/careers' },
   { label: 'Contact', path: '/contact' },
 ];
@@ -220,8 +220,8 @@ export default function Navbar() {
                             key={drop.path}
                             onClick={() => setMobileOpen(false)}
                             className={`block px-4 py-2.5 text-sm transition-colors rounded-lg border-l-2 ${activeItem
-                                ? 'text-[#E8192C] bg-red-50/50 border-[#E8192C] font-bold'
-                                : 'text-gray-600 hover:text-[#E8192C] hover:bg-gray-50/50 border-transparent'
+                              ? 'text-[#E8192C] bg-red-50/50 border-[#E8192C] font-bold'
+                              : 'text-gray-600 hover:text-[#E8192C] hover:bg-gray-50/50 border-transparent'
                               }`}
                           >
                             {drop.label}

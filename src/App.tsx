@@ -14,7 +14,7 @@ import ApplyJobPage from './pages/ApplyJobPage';
 import AboutCompanyPage from './pages/AboutCompanyPage';
 import EmployersPage from './pages/EmployersPage';
 import CandidatesJobseekersPage from './pages/CandidatesJobseekersPage';
-import GalleryPage from './pages/GalleryPage';
+// import GalleryPage from './pages/GalleryPage';
 import OurTeamPage from './pages/OurTeamPage';
 
 /* Scroll to top on route change */
@@ -75,7 +75,7 @@ export default function App() {
             <Route path="/about" element={<AboutCompanyPage />} />
             <Route path="/employers" element={<EmployersPage />} />
             <Route path="/candidates-jobseekers" element={<CandidatesJobseekersPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
+            {/* <Route path="/gallery" element={<GalleryPage />} /> */}
             <Route path="/our-team" element={<OurTeamPage />} />
             <Route path="*" element={<HomePage />} />
           </Routes>

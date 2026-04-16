@@ -36,7 +36,7 @@ const services = [
 const companyLinks = [
   { label: 'About Company', path: '/about' },
   { label: 'Our Team', path: '/our-team' },
-  { label: 'Gallery', path: '/gallery' },
+  // { label: 'Gallery', path: '/gallery' },
   { label: 'For Employers', path: '/employers' },
   { label: 'Candidates & Jobseekers', path: '/candidates-jobseekers' },
 ];
