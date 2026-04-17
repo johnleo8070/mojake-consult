@@ -1,4 +1,16 @@
 {
+    "redirects": [
+        {
+            "source": "/cpanel",
+            "destination": "https://cpanel.mojakeconsult.com/",
+            "permanent": true
+        },
+        {
+            "source": "/webmail",
+            "destination": "https://webmail.mojakeconsult.com/",
+            "permanent": true
+        }
+    ],
     "rewrites": [
         {
             "source": "/api/(.*)",
