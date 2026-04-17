@@ -11,7 +11,7 @@ export default function Logo({ className = '', variant = 'navbar' }: LogoProps) 
   switch (variant) {
     case 'navbar':
       src = '/mojake-consult-logo-1.png';
-      height = '5opx';
+      height = '55px';
       break;
     case 'footer':
       src = '/mojake-consult-logo-2.png';
