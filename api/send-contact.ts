@@ -26,8 +26,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: process.env.EMAIL_USER,
-            pass: process.env.EMAIL_PASS,
+            user: process.env.CONTACT_EMAIL_USER,
+            pass: process.env.CONTACT_EMAIL_PASS,
         },
     });
 
@@ -41,8 +41,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     };
 
     const mailOptions = {
-        from: `"Mojake Consult Website" <${process.env.EMAIL_USER}>`,
-        to: process.env.EMAIL_USER,
+        from: `"Mojake Consult Website" <${process.env.CONTACT_EMAIL_USER}>`,
+        to: process.env.CONTACT_EMAIL_USER,
         replyTo: email,
         subject: `✉️ New Contact Enquiry: ${serviceLabels[service] || service || 'General'} — ${name}`,
         html: `
