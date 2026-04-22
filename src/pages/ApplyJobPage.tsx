@@ -80,7 +80,7 @@ export default function ApplyJobPage() {
         setLoading(true);
         setError('');
         try {
-            const res = await fetch('/api/send-apply', {
+            const res = await fetch('https://mojake-consult-6m9b.vercel.app/api/send-apply', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),

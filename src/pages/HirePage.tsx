@@ -70,7 +70,7 @@ export default function HirePage() {
         setLoading(true);
         setError('');
         try {
-            const res = await fetch('/api/send-hire', {
+            const res = await fetch('https://mojake-consult-6m9b.vercel.app/api/send-hire', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(form),

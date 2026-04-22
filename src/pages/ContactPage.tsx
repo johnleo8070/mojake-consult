@@ -53,7 +53,7 @@ export default function ContactPage() {
     setLoading(true);
     setError('');
     try {
-      const res = await fetch('/api/send-contact', {
+      const res = await fetch('https://mojake-consult-6m9b.vercel.app/api/send-contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
